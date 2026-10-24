@@ -30,3 +30,25 @@ All artworks in the PCAP archive remain the intellectual and artistic property o
 - **Polite Academic Bot Identification:** All HTTP requests transmit an explicit academic `User-Agent` header (`PCAP_Virginia_Tech_Dissertation_Bot/1.0 (chayne@vt.edu)`) with randomized rate-limiting (`1.5` to `3.0` seconds).
 
 ---
+
+## Suggested Citation
+
+**Text Citation (APA / ASA Style):**
+> Wild, Chayne. 2026. *Counter-Visuality in the Carceral Archive: Distant Viewing and Multimodal Interrogation of the Prison Creative Arts Project (PCAP)* (Version 1.0.0) [Computer software]. Virginia Tech. https://github.com/chayne-wild/pcap-counter-visuality
+
+**BibTeX (Zotero / LaTeX / Better BibTeX):**
+```bibtex
+@software{wild2026pcap,
+  author       = {Wild, Chayne},
+  title        = {Counter-Visuality in the Carceral Archive: Distant Viewing and Multimodal Interrogation of the Prison Creative Arts Project (PCAP)},
+  year         = {2026},
+  month        = {10},
+  version      = {1.0.0},
+  organization = {Social, Political, Ethical, and Cultural Thought (ASPECT), Virginia Tech},
+  url          = {[https://github.com/chayne-wild/pcap-counter-visuality](https://github.com/chayne-wild/pcap-counter-visuality)},
+  note         = {Distant viewing (CLIP/LLaVA) and Structural Topic Modeling (STM) replication pipeline}
+}
+```
+
+**Archival Source Attribution:**
+> Prison Creative Arts Project (PCAP) Visual Art Database. Documenting Criminalization and Confinement / Carceral State Project, University of Michigan. https://lsa.umich.edu/pcap/exhibits.html
