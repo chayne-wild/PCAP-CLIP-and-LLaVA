@@ -1,0 +1,30 @@
+# Ignore large binary embeddings, raw VLM transcripts, checkpoints, and R serialized models
+*.parquet
+*.jsonl
+*.rds
+data/*.parquet
+data/*.jsonl
+data/*.rds
+data/checkpoint_*.json
+
+# Strictly forbid any accidental image binary storage
+*.jpg
+*.jpeg
+*.png
+!results/figures/*.png
+
+# Keep folder placeholders and lightweight metadata indices
+!data/.gitkeep
+!results/charts/.gitkeep
+!results/figures/.gitkeep
+!data/pcap_master_metadata.csv
+!data/pcap_excluded_items.csv
+
+# R, Python, and OS temporary files
+.Rhistory
+.RData
+.Rproj.user
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.DS_Store
