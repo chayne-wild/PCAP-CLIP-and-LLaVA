@@ -1,0 +1,14 @@
+Repository Script Sequence (Google Colab Execution Order)
+
+| Script File | Language | Single Task Accomplished | Output Artifact(s) |
+| :--- | :--- | :--- | :--- |
+| `00_colab_environment_setup.py` | Python / R | Mounts Drive, creates `data/` and `results/` folders, installs GPU/R packages, activates `rpy2`. | Configured Colab Runtime |
+| `01_harvest_pcap_omeka_api.py` | Python | Queries Omeka S REST API (`/api/items`, `/api/media`) to index metadata and image URLs without downloading binaries. | `data/pcap_master_metadata.csv`, `data/pcap_excluded_items.csv` |
+| `02_stream_clip_distant_viewing.py` | Python (GPU) | Streams images into volatile RAM, extracts 768-D `CLIP ViT-L/14` embeddings and 6 zero-shot theoretical scores, exports to Parquet. | `data/pcap_clip_embeddings.parquet` |
+| `03_llava_stratified_interrogation.py` | Python (GPU) | Selects stratified high-signal subsample ($\tau \ge 0.90$, $N=1,200$), streams into RAM for 4-bit `LLaVA` iconographic interrogation. | `data/pcap_llava_interrogations.jsonl` |
+| `04_tidy_metadata_and_umap.R` | R (`%%R`) | Ingests Parquet via `arrow`, normalizes mediums/years, runs `uwot::umap` + clustering, tests Section 5.1 Disalienation by medium. | `data/pcap_tidy_corpus.rds`, `results/charts/table01_pcap_medium_taxonomy.csv`, `results/charts/table02_cluster_prompt_profiles.csv`, `results/figures/fig01_disalienation_by_medium.png`, `results/figures/fig02_umap_visual_clusters.png` |
+| `05_llava_tidy_nlp_and_searchK.R` | R (`%%R`) | Ingests LLaVA JSONL, runs `tidytext`, `textstem`, "Visual Plural Bypass" stop-word pruning, builds STM matrix, runs `searchK`. | `data/pcap_llava_stm_out.rds`, `data/pcap_llava_searchK.rds`, `results/figures/fig03_llava_stm_searchK.png` |
+| `06_stm_visual_motifs_k25.R` | R (`%%R`) | Trains deterministic $K=25$ Spectral STM on LLaVA descriptions (`~ s(clean_year) + medium_category`), exports `FREX` tables. | `data/pcap_stm_visual_k25.rds`, `results/charts/table03_llava_visual_topics.csv` |
+| `07_countervisuality_regressions.R` | R (`%%R`) | Runs `estimateEffect` B-splines and Surge-Era OLS regressions on optical/biometric counter-visuality topics (1996–2024 vs. 2010–2024). | `results/figures/fig04_countervisuality_trajectories.png`, `results/charts/table04_temporal_regressions.csv`, `results/charts/table04_temporal_regressions.html` |
+| `08_crossmodal_network_igraph.R` | R (`%%R`) | Maps cross-modal covariance (`topicCorr` & `igraph`) linking LLaVA visual motifs, CLIP clusters, and carceral material mediums. | `data/pcap_visual_topic_corr.rds`, `results/figures/fig05_crossmodal_network_igraph.png`, `results/charts/table05_material_motif_correlations.csv` |
+| `09_qualitative_artwork_dossier.R` | R (`%%R`) | Extracts top exemplar artworks (`findThoughts` + joint CLIP/LLaVA scores) with metadata and Omeka URLs for close reading. | `results/charts/qualitative_artwork_dossier.txt` |
