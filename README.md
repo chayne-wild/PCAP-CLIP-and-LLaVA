@@ -34,7 +34,7 @@ All artworks in the PCAP archive remain the intellectual and artistic property o
 ## Suggested Citation
 
 **Text Citation (APA / ASA Style):**
-> Wild, Chayne. 2026. *Counter-Visuality in the Carceral Archive: Distant Viewing and Multimodal Interrogation of the Prison Creative Arts Project (PCAP)* (Version 1.0.0) [Computer software]. Virginia Tech. https://github.com/chayne-wild/pcap-counter-visuality
+> Wild, Chayne. 2026. *Counter-Visuality in the Carceral Archive: Distant Viewing and Multimodal Interrogation of the Prison Creative Arts Project (PCAP)* (Version 1.0.0) [Computer software]. Virginia Tech. https://github.com/chayne-wild/pcap-clip-and-llava
 
 **BibTeX (Zotero / LaTeX / Better BibTeX):**
 ```bibtex
@@ -45,7 +45,7 @@ All artworks in the PCAP archive remain the intellectual and artistic property o
   month        = {10},
   version      = {1.0.0},
   organization = {Alliance for Social, Political, Ethical, and Cultural Thought (ASPECT), Virginia Tech},
-  url          = {[https://github.com/chayne-wild/pcap-counter-visuality](https://github.com/chayne-wild/pcap-counter-visuality)},
+  url          = {[https://github.com/chayne-wild/pcap-clip-and-llava](https://github.com/chayne-wild/pcap-clip-and-llava)},
   note         = {Distant viewing (CLIP/LLaVA) and Structural Topic Modeling (STM) replication pipeline}
 }
 ```
