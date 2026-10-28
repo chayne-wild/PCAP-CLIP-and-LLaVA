@@ -1,6 +1,6 @@
 # Counter-Visuality in the Carceral Archive: Distant Viewing and Multimodal Interrogation of the Prison Creative Arts Project (PCAP)
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/chayne-wild/pcap-clip-and-llava/blob/main/pcap_clip_and_llava.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/chayne-wild/pcap-clip-and-llava/blob/main/PCAP_CLIP_and_LLaVA.ipynb)
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 ![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)
 ![R 4.3+](https://img.shields.io/badge/R-4.3+-276DC3.svg)
