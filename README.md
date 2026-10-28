@@ -1,4 +1,4 @@
-# pcap-clip-and-llava
+# Counter-Visuality in the Carceral Archive: Distant Viewing and Multimodal Interrogation of the Prison Creative Arts Project (PCAP)
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/chayne-wild/pcap-clip-and-llava/blob/main/pcap_clip_and_llava.ipynb)
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
@@ -10,8 +10,6 @@ A multimodal "distant viewing" and iconographic interrogation pipeline analyzing
 Built primarily for **Google Colaboratory** (bridging Python GPU inference and R statistical modeling via `rpy2` and `Apache Parquet`), this tool streams archival artwork bytes ephemerally into volatile RAM (`io.BytesIO`) to extract 768-D `CLIP ViT-L/14` embeddings and 4-bit quantized `LLaVA-1.5-7B` visual transcripts, followed by UMAP manifold projection, **Structural Topic Modeling (STM)** ($K = 25$), B-spline temporal regressions, and cross-modal network analysis (`igraph`).
 
 ---
-
-# Counter-Visuality in the Carceral Archive: Distant Viewing and Multimodal Interrogation of the Prison Creative Arts Project (PCAP)
 
 ## 1. Project Overview & Theoretical Framework
 **Driving Research Question:** *How do incarcerated artists visually theorize, document, and subvert carceral surveillance, biometric objectification, and institutional enclosure, and how can computational "distant viewing" surface counter-visual resistance across 13,553 artworks?*
