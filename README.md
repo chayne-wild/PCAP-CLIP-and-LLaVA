@@ -205,6 +205,9 @@ To honor incarcerated artists' copyright, moral rights, and data sovereignty whi
 ```
 
 **Archival Source Attribution:**
-> Prison Creative Arts Project (PCAP) Visual Art Database. Documenting Criminalization and Confinement (DCC) / Carceral State Project, University of Michigan. [https://dcc.carceralstateproject.lsa.umich.edu/s/pcap/page/home](https://dcc.carceralstateproject.lsa.umich.edu/s/pcap/page/home)
+> Prison Creative Arts Project (PCAP) Visual Art Database. Documenting Criminalization and Confinement (DCC) / Carceral State Project, University of Michigan. [https://dcc.carceralstateproject.lsa.umich.edu](https://dcc.carceralstateproject.lsa.umich.edu)
+
+See also:
+https://lsa.umich.edu/pcap
 
 ---
