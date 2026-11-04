@@ -1,0 +1,5 @@
+medium_category,n_artworks,corpus_percentage,mean_tactile_disalienation,sd_tactile_disalienation,mean_bodily_autonomy,mean_surveillance_score,mean_bureaucracy_score,mean_disalienation_index,kruskal_wallis_p
+Contraband/Found Carceral Material,353,2.61,0.1584,0.0321,0.1464,0.1237,0.1637,0.1692,6.702999999999999e-78
+Mixed/Sculptural,924,6.82,0.1549,0.0289,0.1478,0.124,0.1623,0.0961,6.702999999999999e-78
+Graphite/Ink on Paper,5240,38.68,0.145,0.0262,0.1622,0.1321,0.1675,-0.3155,6.702999999999999e-78
+Standard Paint/Canvas,7029,51.89,0.155,0.0299,0.1567,0.134,0.1617,0.2141,6.702999999999999e-78

@@ -1,0 +1,358 @@
+================================================================================
+QUALITATIVE ARTWORK DOSSIER — CHAPTER 5: COUNTER-VISUALITY IN THE PCAP ARCHIVE
+Generated: 2026-11-04 02:22:15.438946 | Joint CLIP (ViT-L/14) + LLaVA (STM K=25) Ranking
+================================================================================
+
+--------------------------------------------------------------------------------
+MOTIF FAMILY : PANOPTIC EYES & WATCHTOWERS
+PRIMARY STM  : Topic 17 | Top FREX Terms: sensory, disalienation, spatial, identification, practice, grid, optical, gaze, counter, direct
+CLIP AXIS    : score_surveillance_biometric
+--------------------------------------------------------------------------------
+
+  [EXEMPLAR #1 | Joint Z-Score: +2.621 | STM Theta: 0.783 | CLIP Sim: 0.195]
+  PCAP Item ID     : 23926 (Log/ID: )
+  Artwork Title    : Trapped
+  Artist           : Dave Wells
+  Exhibition Year  : 2010 (15th Annual Exhibition of Art by Michigan Prisoners)
+  Material Medium  : Pencil/Ink [Taxonomy: Graphite/Ink on Paper]
+  Facility / Level :  [Unspecified MDOC Facility]
+  Omeka S Web URL  : https://dcc.carceralstateproject.lsa.umich.edu/s/pcapartdatabase/item/23926
+  Artist Statement : [No artist statement archived on Omeka S item record]
+  LLaVA Transcript : (a) The artwork is a black and white drawing, featuring a man with a mouth open, surrounded by barbed wire. The man's face is covered in barbed wire, and he appears to be yelling. The drawing is on a piece of paper, which is the material texture of the artwork.
+
+(b) The artwork depicts a man with a mouth open, and there are no security cameras, watchtowers, prison bars, razor wire, identification numbers, barcodes, or optical grids visible in the image.
+
+(c) The man's posture is tense, with his mouth open and his face covered in barbed wire. He appears to be yelling, and his facial expression is intense. The man does not return a direct counter-gaze toward the viewer.
+
+(d) The visual practice of spatial or sensory disalienation is not evident in this artwork. The image does not show any open horizons, natural landscapes, wildlife, or tactile craft.
+
+  [EXEMPLAR #2 | Joint Z-Score: +2.446 | STM Theta: 0.822 | CLIP Sim: 0.171]
+  PCAP Item ID     : 44062 (Log/ID: )
+  Artwork Title    : The Eye of Us
+  Artist           : Frank (FLAJ)
+  Exhibition Year  : 2023 (Bin 8)
+  Material Medium  : Pastel, Color Pencil [Taxonomy: Graphite/Ink on Paper]
+  Facility / Level : Thumb Correctional Facility [Level II-IV (Multi-Level Security)]
+  Omeka S Web URL  : https://dcc.carceralstateproject.lsa.umich.edu/s/pcapartdatabase/item/44062
+  Artist Statement : [No artist statement archived on Omeka S item record]
+  LLaVA Transcript : (a) The artwork is a drawing of a human eye, which is the focal point of the composition. The surface markings are visible, and the material texture appears to be a combination of pencil and ink.
+
+(b) The drawing features a single eye, which is the main subject of the artwork. There are no other depictions of eyes, security cameras, watchtowers, prison bars, razor wire, identification numbers, barcodes, or optical grids in the image.
+
+(c) The eye is depicted in a close-up view, and the subject does not return a direct counter-gaze toward the viewer. The facial expression is not discernible, and the posture is not evident in the image.
+
+(d) The visual practice of spatial or sensory disalienation is not evident in the artwork. The drawing does not include any open horizons, natural landscapes, wildlife, or tactile craft.
+
+  [EXEMPLAR #3 | Joint Z-Score: +2.374 | STM Theta: 0.751 | CLIP Sim: 0.182]
+  PCAP Item ID     : 23316 (Log/ID: )
+  Artwork Title    : Playin' For Keeps
+  Artist           : Michael Dean
+  Exhibition Year  : 2010 (15th Annual Exhibition of Art by Michigan Prisoners)
+  Material Medium  : Acrylic [Taxonomy: Standard Paint/Canvas]
+  Facility / Level :  [Unspecified MDOC Facility]
+  Omeka S Web URL  : https://dcc.carceralstateproject.lsa.umich.edu/s/pcapartdatabase/item/23316
+  Artist Statement : [No artist statement archived on Omeka S item record]
+  LLaVA Transcript : The artwork is a painting featuring a man with a flag in the background. The man is sitting on a bench, and there is a horse in the foreground. The painting is done on a wooden surface, and the artist has used oil to create the image.
+
+(a) Formal composition, surface markings, and material texture: The painting is a close-up of the man sitting on the bench, with the flag in the background. The horse is positioned in the foreground, and the wooden surface adds a textured element to the painting.
+
+(b) Any depictions of eyes, security cameras, watchtowers, prison bars, razor wire, identification numbers, barcodes, or optical grids: The painting does not depict any of these elements.
+
+(c) Bodily framing, posture, facial expression, and whether the subject returns a direct counter-gaze toward the viewer: The man is sitting on the bench, and his posture and facial expression are not directly countering the viewer's gaze.
+
+(d) Visual practices of spatial or sensory disalienation, such as open horizons, natural landscapes, wildlife, or tactile craft: The painting does not show any open horizons or natural landscapes. However, the presence of the horse in the foreground adds a tactile element to the painting.
+
+  [EXEMPLAR #4 | Joint Z-Score: +2.232 | STM Theta: 0.791 | CLIP Sim: 0.161]
+  PCAP Item ID     : 18151 (Log/ID: )
+  Artwork Title    : Ostracized
+  Artist           : Alexis Ayala
+  Exhibition Year  : 2003 (8th Annual Exhibition of Art by Michigan Prisoners)
+  Material Medium  : Pastel [Taxonomy: Standard Paint/Canvas]
+  Facility / Level :  [Unspecified MDOC Facility]
+  Omeka S Web URL  : https://dcc.carceralstateproject.lsa.umich.edu/s/pcapartdatabase/item/18151
+  Artist Statement : [No artist statement archived on Omeka S item record]
+  LLaVA Transcript : (a) The artwork is a painting of a man with his hands up to his face, possibly making a funny face. The man is wearing a blue shirt, and the painting is on a blue surface. The material texture appears to be a canvas.
+
+(b) The painting features a man with his hands up to his face, which could be interpreted as a funny facial expression. There are no security cameras, watchtowers, prison bars, razor wire, identification numbers, barcodes, or optical grids visible in the image.
+
+(c) The man is depicted in a posture where his hands are covering his face, possibly making a funny face. He is not directly counter-gazing at the viewer.
+
+(d) The visual practice of spatial or sensory disalienation is not evident in the painting. The image does not show any open horizons, natural landscapes, wildlife, or tactile craft.
+
+  [EXEMPLAR #5 | Joint Z-Score: +2.169 | STM Theta: 0.739 | CLIP Sim: 0.169]
+  PCAP Item ID     : 12648 (Log/ID: )
+  Artwork Title    : Do I or Shall I
+  Artist           : Stanley Earl
+  Exhibition Year  : 2021 (26th Annual Exhibition of Art by Michigan Prisoners; Wall F)
+  Material Medium  : Charcoal/Graphite [Taxonomy: Graphite/Ink on Paper]
+  Facility / Level : Oaks Correctional Facility [Level II-IV (Multi-Level Security)]
+  Omeka S Web URL  : https://dcc.carceralstateproject.lsa.umich.edu/s/pcapartdatabase/item/12648
+  Artist Statement : [No artist statement archived on Omeka S item record]
+  LLaVA Transcript : The artwork is a painting that features a combination of different elements. The painting is divided into four distinct sections, each with its own unique composition. The first section is a painting of a baby, which is located in the top left corner of the painting. The second section is a painting of a house, which is situated in the middle of the painting. The third section is a painting of a ring, which is located in the top right corner of the painting. The fourth section is a painting of a baby, which is located in the bottom right corner of the painting.
+
+In terms of formal composition, the painting has a somewhat disorganized arrangement of the different elements. The surface markings and material texture of the painting are not discernible, as the focus is on the content of the painting rather than the technique used to create it.
+
+There are no depictions of eyes, security cameras, watchtowers, prison bars, razor wire, identification numbers, barcodes, or optical grids in the painting. The painting does not feature any bodily framing, posture, facial expression, or direct counter-gaze from the subject.
+
+The visual practices of spatial or sensory disalienation are not evident in the painting. The painting does not include any open horizons, natural landscapes, wildlife, or tactile craft. The painting is a simple representation of a baby, a house, a ring, and another baby, without any additional elements that would create a sense of disalienation.
+
+--------------------------------------------------------------------------------
+MOTIF FAMILY : FORENSIC NUMBERS & BARCODES
+PRIMARY STM  : Topic 21 | Top FREX Terms: wooden, box, sculpture, sign, model, wood, flag, letter, dream, rustic
+CLIP AXIS    : score_state_bureaucracy
+--------------------------------------------------------------------------------
+
+  [EXEMPLAR #1 | Joint Z-Score: +5.513 | STM Theta: 0.946 | CLIP Sim: 0.195]
+  PCAP Item ID     : 34958 (Log/ID: )
+  Artwork Title    : Walk With Me
+  Artist           : Robert T. Hinds
+  Exhibition Year  : 2017 (22nd Annual Exhibition of Art by Michigan Prisoners)
+  Material Medium  : Wood, acrylic [Taxonomy: Mixed/Sculptural]
+  Facility / Level : Gus Harrison Correctional Facility [Level II-IV (Multi-Level Security)]
+  Omeka S Web URL  : https://dcc.carceralstateproject.lsa.umich.edu/s/pcapartdatabase/item/34958
+  Artist Statement : [No artist statement archived on Omeka S item record]
+  LLaVA Transcript : The artwork is a wooden frame with a piece of paper inside, which appears to be a letter or a message. The frame is made of wood and has a rustic appearance. The paper inside the frame is written in cursive handwriting, which adds a personal touch to the artwork. The content of the letter or message is not discernible, but it seems to be a meaningful communication between the artist and the recipient. The artwork is displayed on a table, and the wooden frame serves as a unique and creative way to present the message.
+
+  [EXEMPLAR #2 | Joint Z-Score: +5.392 | STM Theta: 0.838 | CLIP Sim: 0.219]
+  PCAP Item ID     : 58118 (Log/ID: )
+  Artwork Title    : Simple Reform
+  Artist           : Terry Ulrich
+  Exhibition Year  : 2025 (Bin 7)
+  Material Medium  : paper, pen, ink [Taxonomy: Graphite/Ink on Paper]
+  Facility / Level : Oaks Correctional Facility [Level II-IV (Multi-Level Security)]
+  Omeka S Web URL  : https://dcc.carceralstateproject.lsa.umich.edu/s/pcapartdatabase/item/58118
+  Artist Statement : [No artist statement archived on Omeka S item record]
+  LLaVA Transcript : The image features a white sign with red letters that reads "Educate not encarcerate." This message serves as a powerful statement against mass incarceration and advocates for education instead. The sign's design is simple yet impactful, making it an effective tool to raise awareness about this important issue.
+
+  [EXEMPLAR #3 | Joint Z-Score: +5.273 | STM Theta: 0.799 | CLIP Sim: 0.225]
+  PCAP Item ID     : 33868 (Log/ID: )
+  Artwork Title    : Comb with a Carved Dog, with Big Foot's Tooth
+  Artist           : Frederick
+  Exhibition Year  : 2015 ()
+  Material Medium  : tree limbs from LRC yard [Taxonomy: Standard Paint/Canvas]
+  Facility / Level : Earnest C. Brooks Correctional Facility [Level I-II (Minimum / Low-Medium)]
+  Omeka S Web URL  : https://dcc.carceralstateproject.lsa.umich.edu/s/pcapartdatabase/item/33868
+  Artist Statement : [No artist statement archived on Omeka S item record]
+  LLaVA Transcript : The image features a wooden object with multiple holes that resembles a comb or a piece of wood with nails sticking out. It appears to be a unique sculpture made from a single piece of wood. There are no other visible elements in the scene apart from this wooden creation.
+
+  [EXEMPLAR #4 | Joint Z-Score: +4.814 | STM Theta: 0.893 | CLIP Sim: 0.175]
+  PCAP Item ID     : 32078 (Log/ID: )
+  Artwork Title    : Saving Water Out House
+  Artist           : Jonathan Chapman
+  Exhibition Year  : 2016 (Documenting Prison Education and Arts)
+  Material Medium  : Acrylic [Taxonomy: Standard Paint/Canvas]
+  Facility / Level : Bellamy Creek Correctional Facility [Level II-IV (Multi-Level Security)]
+  Omeka S Web URL  : https://dcc.carceralstateproject.lsa.umich.edu/s/pcapartdatabase/item/32078
+  Artist Statement : [No artist statement archived on Omeka S item record]
+  LLaVA Transcript : The artwork is a small wooden structure that resembles a door or a small room. It features a door with a lock and a window, which is a unique aspect of the piece. The door is open, revealing a small animal, possibly a rat, inside the structure. The animal appears to be looking out of the door, creating a sense of curiosity and intrigue. The wooden material and the door's design contribute to the overall aesthetic of the piece. The artist's choice of a small animal as the subject matter adds a touch of whimsy and unconventionality to the artwork.
+
+  [EXEMPLAR #5 | Joint Z-Score: +4.726 | STM Theta: 0.859 | CLIP Sim: 0.180]
+  PCAP Item ID     : 32202 (Log/ID: )
+  Artwork Title    : Parlevino
+  Artist           : Donald Ebrahimi
+  Exhibition Year  : 2016 (Documenting Prison Education and Arts)
+  Material Medium  : Mini Sticks, Glue, and Popsicle Sticks [Taxonomy: Standard Paint/Canvas]
+  Facility / Level : Chippewa Correctional Facility [Level II-IV (Multi-Level Security)]
+  Omeka S Web URL  : https://dcc.carceralstateproject.lsa.umich.edu/s/pcapartdatabase/item/32202
+  Artist Statement : [No artist statement archived on Omeka S item record]
+  LLaVA Transcript : The artwork is a wooden model of a pirate ship, featuring a young boy as the main subject. The ship is adorned with various flags, including the American flag, and a picture of the boy is displayed on the side of the ship. The model is intricately crafted, showcasing the artist's skill and attention to detail. The wooden material adds a rustic and authentic feel to the piece. The boy's expression and posture convey a sense of adventure and freedom, as if he is embarking on a daring journey. Overall, the artwork is a creative and engaging representation of a pirate ship, with a unique personal touch added by the inclusion of the boy's picture.
+
+--------------------------------------------------------------------------------
+MOTIF FAMILY : FRAGMENTED/SHACKLED BODIES & COUNTER-GAZE
+PRIMARY STM  : Topic 12 | Top FREX Terms: cell, confine, window, prison, jail, isolation, door, confinement, sink, phone
+CLIP AXIS    : score_bodily_autonomy
+--------------------------------------------------------------------------------
+
+  [EXEMPLAR #1 | Joint Z-Score: +4.232 | STM Theta: 0.765 | CLIP Sim: 0.201]
+  PCAP Item ID     : 35102 (Log/ID: )
+  Artwork Title    : Light in the Storm
+  Artist           : Michael Wayne Robbins
+  Exhibition Year  : 2017 (22nd Annual Exhibition of Art by Michigan Prisoners)
+  Material Medium  : Pencil, Ink [Taxonomy: Graphite/Ink on Paper]
+  Facility / Level : Newberry Correctional Facility [Level I-II (Minimum / Low-Medium)]
+  Omeka S Web URL  : https://dcc.carceralstateproject.lsa.umich.edu/s/pcapartdatabase/item/35102
+  Artist Statement : [No artist statement archived on Omeka S item record]
+  LLaVA Transcript : The image depicts a scene from behind barbed wire fencing, with a person standing inside a small building that appears to be a prison cell. The foreground figure seems to be looking out through the bars, possibly observing something happening outside the cell. There are several other figures visible in the background, but they seem to be farther away from the viewer's perspective.
+
+The artwork features a black-and-white color scheme, which adds a sense of drama and intensity to the scene. The drawing style can be described as somewhat rough and sketchy, giving it a more authentic feel. The overall composition of the piece emphasizes the confinement and isolation experienced by those living within such spaces.
+
+  [EXEMPLAR #2 | Joint Z-Score: +4.104 | STM Theta: 0.749 | CLIP Sim: 0.199]
+  PCAP Item ID     : 16259 (Log/ID: DPEA_ART4_0037)
+  Artwork Title    : Untitled (prison)
+  Artist           : Alloysius Cross-Bey; Cross-Bey, Alloysius
+  Exhibition Year  : 1999 (4th Annual Exhibition of Art by Michigan Prisoners; Documenting Prison Education and Arts)
+  Material Medium  : Colored pencil [Taxonomy: Graphite/Ink on Paper]
+  Facility / Level :  [Unspecified MDOC Facility]
+  Omeka S Web URL  : https://dcc.carceralstateproject.lsa.umich.edu/s/pcapartdatabase/item/16259
+  Artist Statement : [No artist statement archived on Omeka S item record]
+  LLaVA Transcript : The artwork is a black and white drawing of a person in a jail cell. The person is sitting on a toilet, which is located in the lower right corner of the image. The cell is equipped with a sink and a mirror, which can be seen in the upper right corner of the image. The person appears to be looking out of the cell, possibly at the viewer. The drawing is a representation of the confinement and isolation experienced by incarcerated individuals. The artist's use of black and white adds a sense of depth and contrast to the image.
+
+  [EXEMPLAR #3 | Joint Z-Score: +3.963 | STM Theta: 0.660 | CLIP Sim: 0.214]
+  PCAP Item ID     : 16668 (Log/ID: )
+  Artwork Title    : A Key-Hole Size View
+  Artist           : Alloysius Cross Bey
+  Exhibition Year  : 2000 (5th Annual Exhibition of Art by Michigan Prisoners)
+  Material Medium  : colored pencils [Taxonomy: Graphite/Ink on Paper]
+  Facility / Level :  [Unspecified MDOC Facility]
+  Omeka S Web URL  : https://dcc.carceralstateproject.lsa.umich.edu/s/pcapartdatabase/item/16668
+  Artist Statement : [No artist statement archived on Omeka S item record]
+  LLaVA Transcript : The image features a black and white painting that depicts a man standing inside a jail cell. He appears to be looking out through bars, possibly contemplating his situation. The scene captures the somber atmosphere often associated with prison life.
+
+The medium used for this artwork is oil paint, which gives it a rich texture and depth. The colors used are predominantly shades of gray, black, and white, creating a stark contrast between the subject and his surroundings. This choice of colors emphasizes the moodiness and confinement experienced by the inmate.
+
+In the foreground, there's a person who seems to be observing something beyond the bars. They appear to be holding a camera, possibly documenting their experiences within the jail cell. Additionally, there's a clock visible in the background, indicating the passage of time during the individual's incarceration.
+
+  [EXEMPLAR #4 | Joint Z-Score: +3.933 | STM Theta: 0.681 | CLIP Sim: 0.208]
+  PCAP Item ID     : 43678 (Log/ID: )
+  Artwork Title    : Untitled
+  Artist           : Stained
+  Exhibition Year  : 2023 (Bin 6)
+  Material Medium  :  [Taxonomy: Standard Paint/Canvas]
+  Facility / Level : Ionia Correctional Facility [Level IV-V (High / Maximum)]
+  Omeka S Web URL  : https://dcc.carceralstateproject.lsa.umich.edu/s/pcapartdatabase/item/43678
+  Artist Statement : [No artist statement archived on Omeka S item record]
+  LLaVA Transcript : The image features a painting that appears to be inspired by the concept of confinement. It showcases two different perspectives of a person's life within a prison cell. One perspective is depicted through a small window, while the other is seen from inside the cell itself. The painting captures the essence of being trapped and limited in one's surroundings.
+
+The medium used for this artwork is oil paint, which adds depth and richness to the scene. The colors used are predominantly shades of gray, black, and white, creating a somber atmosphere. The formal texture of the painting includes various textures such as the roughness of the bars, the smoothness of the window frame, and the intricate details of the cell interior.
+
+In the foreground, there is a figure holding a camera, possibly attempting to capture memories despite the limitations imposed by the prison environment. This element adds a sense of hope and resilience to the otherwise bleak scene.
+
+  [EXEMPLAR #5 | Joint Z-Score: +3.737 | STM Theta: 0.692 | CLIP Sim: 0.195]
+  PCAP Item ID     : 34553 (Log/ID: )
+  Artwork Title    : I Am the Canvas, I Am the Artist
+  Artist           : Johnnie Trice
+  Exhibition Year  : 2015 ()
+  Material Medium  : acrylic [Taxonomy: Standard Paint/Canvas]
+  Facility / Level : Thumb Correctional Facility [Level II-IV (Multi-Level Security)]
+  Omeka S Web URL  : https://dcc.carceralstateproject.lsa.umich.edu/s/pcapartdatabase/item/34553
+  Artist Statement : [No artist statement archived on Omeka S item record]
+  LLaVA Transcript : The image features a black man standing inside a jail cell with bars covering the window. He appears to be looking out through the bars, possibly observing his surroundings or waiting for someone. There are several books scattered around the room, some placed near the bars while others are located closer to the floor. A chair can also be seen within the cell, positioned towards the left side of the scene. Overall, the painting captures the confinement and isolation experienced by those incarcerated.
+
+--------------------------------------------------------------------------------
+MOTIF FAMILY : PASTORAL ESCAPE & TACTILE DISALIENATION
+PRIMARY STM  : Topic 18 | Top FREX Terms: serene, boat, lighthouse, river, forest, mountain, tree, rock, sunset, lush
+CLIP AXIS    : score_tactile_disalienation
+--------------------------------------------------------------------------------
+
+  [EXEMPLAR #1 | Joint Z-Score: +4.024 | STM Theta: 0.948 | CLIP Sim: 0.230]
+  PCAP Item ID     : 33997 (Log/ID: )
+  Artwork Title    : Quiet Waters
+  Artist           : The Gentle Giant
+  Exhibition Year  : 2015 ()
+  Material Medium  : acrylic [Taxonomy: Standard Paint/Canvas]
+  Facility / Level : Saginaw Correctional Facility [Level II-IV (Multi-Level Security)]
+  Omeka S Web URL  : https://dcc.carceralstateproject.lsa.umich.edu/s/pcapartdatabase/item/33997
+  Artist Statement : [No artist statement archived on Omeka S item record]
+  LLaVA Transcript : The image depicts a beautiful scene of a waterfall cascading down rocks within a forest. The waterfall appears to be located near a river, with the water flowing through the rocks creating a picturesque view. There are several trees surrounding the area, adding to the lush greenery of the forest. A few bushes can also be seen scattered throughout the landscape. In addition to the natural elements, there is a person visible in the foreground, possibly observing the waterfall from a distance.
+
+  [EXEMPLAR #2 | Joint Z-Score: +3.936 | STM Theta: 0.940 | CLIP Sim: 0.227]
+  PCAP Item ID     : 32552 (Log/ID: )
+  Artwork Title    : Serenity
+  Artist           : John Mazzie
+  Exhibition Year  : 2016 (Documenting Prison Education and Arts)
+  Material Medium  : Acrylic [Taxonomy: Standard Paint/Canvas]
+  Facility / Level : Saginaw Correctional Facility [Level II-IV (Multi-Level Security)]
+  Omeka S Web URL  : https://dcc.carceralstateproject.lsa.umich.edu/s/pcapartdatabase/item/32552
+  Artist Statement : [No artist statement archived on Omeka S item record]
+  LLaVA Transcript : The painting depicts a serene scene featuring a river flowing through a lush green forest with several trees along its banks. There are two prominent tree trunks visible in the foreground, one closer to the left side and another nearer to the center-right area. A small waterfall can be seen cascading down from above, adding to the beauty of the landscape.
+
+In addition to the natural elements, there are two people in the image. One person is located towards the right side of the painting, while the other individual is situated more centrally within the frame. Both individuals appear to be observing the picturesque view before them.
+
+  [EXEMPLAR #3 | Joint Z-Score: +3.927 | STM Theta: 0.883 | CLIP Sim: 0.237]
+  PCAP Item ID     : 23022 (Log/ID: )
+  Artwork Title    : Tranquility
+  Artist           : Karl Strunk
+  Exhibition Year  : 2009 (14th Annual Exhibition of Art by Michigan Prisoners)
+  Material Medium  : Acrylic [Taxonomy: Standard Paint/Canvas]
+  Facility / Level :  [Unspecified MDOC Facility]
+  Omeka S Web URL  : https://dcc.carceralstateproject.lsa.umich.edu/s/pcapartdatabase/item/23022
+  Artist Statement : [No artist statement archived on Omeka S item record]
+  LLaVA Transcript : The image depicts a painting featuring a river flowing through a forest with several trees lining its banks. There are two main trees visible in the scene, one towards the left side and another closer to the center. A few more trees can be seen further back in the distance. The painting also includes some rocks scattered throughout the scene, adding depth and detail to the landscape. Additionally, there's a person standing near the middle-left area of the painting, possibly observing the river or engaging in some activity within the forest.
+
+  [EXEMPLAR #4 | Joint Z-Score: +3.853 | STM Theta: 0.886 | CLIP Sim: 0.232]
+  PCAP Item ID     : 12388 (Log/ID: )
+  Artwork Title    : A Walk Through a Fire Autumn Day
+  Artist           : Doug Austin
+  Exhibition Year  : 2021 (26th Annual Exhibition of Art by Michigan Prisoners; Zone 2)
+  Material Medium  : Colored Pencil, Ink, Paint, Television Screen [Taxonomy: Graphite/Ink on Paper]
+  Facility / Level : Gus Harrison Correctional Facility [Level II-IV (Multi-Level Security)]
+  Omeka S Web URL  : https://dcc.carceralstateproject.lsa.umich.edu/s/pcapartdatabase/item/12388
+  Artist Statement : [No artist statement archived on Omeka S item record]
+  LLaVA Transcript : The image depicts a serene landscape featuring a stream flowing through a lush green field with several orange trees scattered throughout the scene. There are at least five distinct trees visible in various positions across the frame. A few rocks can be seen near the stream, adding to the natural beauty of the scene. In addition to the main elements, there's also a person standing towards the right side of the image, possibly observing the picturesque view.
+
+  [EXEMPLAR #5 | Joint Z-Score: +3.841 | STM Theta: 0.926 | CLIP Sim: 0.223]
+  PCAP Item ID     : 21872 (Log/ID: )
+  Artwork Title    : River Run
+  Artist           : Richard Hogsed
+  Exhibition Year  : 2008 (13th Annual Exhibition of Art by Michigan Prisoners; Documenting Prison Education and Arts)
+  Material Medium  : Acrylic [Taxonomy: Standard Paint/Canvas]
+  Facility / Level :  [Unspecified MDOC Facility]
+  Omeka S Web URL  : https://dcc.carceralstateproject.lsa.umich.edu/s/pcapartdatabase/item/21872
+  Artist Statement : [No artist statement archived on Omeka S item record]
+  LLaVA Transcript : The image depicts a serene scene featuring a river flowing through a lush green forest with mountains visible in the background. There are several rocks placed throughout the scene, adding to its natural beauty. A person can be seen standing near the center of the painting, possibly observing the surroundings or enjoying the peaceful atmosphere. Additionally, there's a bird perched atop one of the rocks, further enhancing the tranquility of the scene. Overall, this artwork captures the essence of nature and offers a sense of calmness for those who view it.
+
+--------------------------------------------------------------------------------
+MOTIF FAMILY : TELEPHONIC/SCREEN SEPARATION & DIGITAL MEDIATION
+PRIMARY STM  : Topic 16 | Top FREX Terms: skull, skeleton, glass, pair, monster, crown, demon, bookshelf, demonic, danger
+CLIP AXIS    : score_digital_mediation
+--------------------------------------------------------------------------------
+
+  [EXEMPLAR #1 | Joint Z-Score: +5.649 | STM Theta: 0.850 | CLIP Sim: 0.140]
+  PCAP Item ID     : 49363 (Log/ID: )
+  Artwork Title    : Metaphysical
+  Artist           : Nathaniel Morrice
+  Exhibition Year  : 2024 (Wall H)
+  Material Medium  : Acrylic paint on ampersand hardboard [Taxonomy: Standard Paint/Canvas]
+  Facility / Level : Earnest C. Brooks Correctional Facility [Level I-II (Minimum / Low-Medium)]
+  Omeka S Web URL  : https://dcc.carceralstateproject.lsa.umich.edu/s/pcapartdatabase/item/49363
+  Artist Statement : [No artist statement archived on Omeka S item record]
+  LLaVA Transcript : The artwork is a painting of a skeleton figure, possibly a man, with a star in the background. The skeleton is depicted in a relaxed position, with its arms outstretched. The painting is set against a backdrop of a colorful, swirling, and somewhat chaotic space, which adds a sense of depth and complexity to the composition. The skeleton figure is the central focus of the painting, and its posture and facial expression convey a sense of peacefulness and tranquility. The overall effect of the painting is a visually striking and thought-provoking image that invites the viewer to contemplate the fragility and impermanence of life.
+
+  [EXEMPLAR #2 | Joint Z-Score: +5.429 | STM Theta: 0.795 | CLIP Sim: 0.150]
+  PCAP Item ID     : 21873 (Log/ID: )
+  Artwork Title    : Spirits - Self Portrait
+  Artist           : Richard Hogsed
+  Exhibition Year  : 2008 (13th Annual Exhibition of Art by Michigan Prisoners; Documenting Prison Education and Arts)
+  Material Medium  : Watercolor [Taxonomy: Standard Paint/Canvas]
+  Facility / Level :  [Unspecified MDOC Facility]
+  Omeka S Web URL  : https://dcc.carceralstateproject.lsa.umich.edu/s/pcapartdatabase/item/21873
+  Artist Statement : [No artist statement archived on Omeka S item record]
+  LLaVA Transcript : The artwork is a painting of a bottle of wine, which is placed on a counter. The bottle is covered in various markings, including a skull and crossbones, which adds a sense of danger or warning to the scene. The painting also features a ghostly figure, possibly a demon, hovering above the bottle, which adds an element of supernatural or fantastical elements to the scene. The overall composition of the painting is visually interesting and thought-provoking.
+
+  [EXEMPLAR #3 | Joint Z-Score: +4.760 | STM Theta: 0.686 | CLIP Sim: 0.155]
+  PCAP Item ID     : 22615 (Log/ID: )
+  Artwork Title    : Shipwrecked
+  Artist           : Jeffrey Hoaglin
+  Exhibition Year  : 2009 (14th Annual Exhibition of Art by Michigan Prisoners)
+  Material Medium  : Pencil [Taxonomy: Graphite/Ink on Paper]
+  Facility / Level :  [Unspecified MDOC Facility]
+  Omeka S Web URL  : https://dcc.carceralstateproject.lsa.umich.edu/s/pcapartdatabase/item/22615
+  Artist Statement : [No artist statement archived on Omeka S item record]
+  LLaVA Transcript : The artwork is a black and white drawing of a ship, possibly a pirate ship, with a skeleton crew. The ship is surrounded by a sea of eyes, which adds a surreal and eerie touch to the scene. The drawing is done with a pencil, giving it a more traditional and hand-drawn appearance. The composition of the drawing is well-balanced, with the ship being the central focus and the eyes surrounding it, creating a sense of depth and intrigue. The eyes are positioned in various sizes and shapes, adding to the complexity of the scene. Overall, the artwork is a thought-provoking and imaginative piece that invites the viewer to explore its deeper meanings.
+
+  [EXEMPLAR #4 | Joint Z-Score: +4.600 | STM Theta: 0.520 | CLIP Sim: 0.216]
+  PCAP Item ID     : 57590 (Log/ID: )
+  Artwork Title    : JP6 Computer Box
+  Artist           : Jeremy Lutze
+  Exhibition Year  : 2025 (Zone 4)
+  Material Medium  : paper, glue, black paint, mod podge [Taxonomy: Mixed/Sculptural]
+  Facility / Level : Muskegon Correctional Facility [Level II-IV (Multi-Level Security)]
+  Omeka S Web URL  : https://dcc.carceralstateproject.lsa.umich.edu/s/pcapartdatabase/item/57590
+  Artist Statement : [No artist statement archived on Omeka S item record]
+  LLaVA Transcript : The image features a small black computer monitor with a keyboard attached to it. The screen displays a rainbow-colored background that adds vibrancy to the scene. There are no visible foreground figures or held objects in this particular image. However, there might be other elements within the context of the larger artwork, such as additional screens, figures, or objects not directly shown in this specific frame.
+
+  [EXEMPLAR #5 | Joint Z-Score: +4.369 | STM Theta: 0.621 | CLIP Sim: 0.159]
+  PCAP Item ID     : 26028 (Log/ID: )
+  Artwork Title    : Tiempo Muerto (Dead Time)
+  Artist           : Clemente P. Pena
+  Exhibition Year  : 2013 (18th Annual Exhibition of Art by Michigan Prisoners)
+  Material Medium  : acrylic [Taxonomy: Standard Paint/Canvas]
+  Facility / Level :  [Unspecified MDOC Facility]
+  Omeka S Web URL  : https://dcc.carceralstateproject.lsa.umich.edu/s/pcapartdatabase/item/26028
+  Artist Statement : [No artist statement archived on Omeka S item record]
+  LLaVA Transcript : The artwork is a black and white painting featuring a skeleton figure, a skull, and a cup. The skeleton is positioned in the center of the painting, with the skull located above it. The cup is placed near the skeleton, slightly to the left. The painting also includes a clock, which is situated on the left side of the image.
+
+In terms of the formal composition, the skeleton and skull are the main focal points of the painting, with the cup adding an interesting element to the composition. The black and white color scheme adds a sense of depth and contrast to the image. The surface markings and material texture are evident in the fine details of the skeleton, skull, and cup.
+
+The artwork also features a few security-related elements, such as a clock and a cup, which could be interpreted as a metaphor for the passage of time or the importance of time in a prison setting. The skeleton and skull may also symbolize the fragility of life and the inevitability of death. The direct counter-gaze from the skeleton towards the viewer adds a sense of engagement and interaction with the viewer, making the artwork more thought-provoking and emotionally charged.
+

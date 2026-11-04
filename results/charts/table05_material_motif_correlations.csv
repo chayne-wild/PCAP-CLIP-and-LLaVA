@@ -1,0 +1,326 @@
+from_node,to_node,topic_id,theoretical_family,covariate_type,pearson_r,p_value
+T09 (movement),CLIP Cluster 6,9,General Carceral Iconography,CLIP Cluster,0.6988,2.268e-318
+T18 (serene),CLIP Cluster 3,18,Pastoral Escape & Tactile Disalienation,CLIP Cluster,0.661,3.0319999999999982e-273
+T02 (body),CLIP Cluster 6,2,Pastoral Escape & Tactile Disalienation,CLIP Cluster,0.6435,1.918999999999999e-254
+T21 (wooden),CLIP Cluster 4,21,Forensic Numbers & Barcodes,CLIP Cluster,0.6414,2.718999999999999e-252
+T11 (eye),CLIP Cluster 5,11,Panoptic Eyes & Watchtowers,CLIP Cluster,0.3213,2.0879999999999998e-53
+T04 (paint),Formal: Saturation (Chroma),4,General Carceral Iconography,Formal HCI Color/Light,0.3176,2.929e-24
+T09 (movement),Formal: Brightness (Intensity),9,General Carceral Iconography,Formal HCI Color/Light,0.315,7.054e-24
+T04 (paint),Medium: Standard Paint/Canvas,4,General Carceral Iconography,Material Medium,0.3001,1.762e-46
+T04 (paint),Medium: Graphite/Ink on Paper,4,General Carceral Iconography,Material Medium,-0.275,5.19e-39
+T04 (paint),Formal: Brightness (Intensity),4,General Carceral Iconography,Formal HCI Color/Light,-0.2744,2.804e-18
+T21 (wooden),Medium: Mixed/Sculptural,21,Forensic Numbers & Barcodes,Material Medium,0.2614,2.705e-35
+T09 (movement),Formal: Saturation (Chroma),9,General Carceral Iconography,Formal HCI Color/Light,-0.2545,7.278e-16
+T21 (wooden),Medium: Contraband/Found Carceral Material,21,Forensic Numbers & Barcodes,Material Medium,0.2462,2.212e-31
+T14 (heart),CLIP Cluster 2,14,Pastoral Escape & Tactile Disalienation,CLIP Cluster,0.239,1.276e-29
+T07 (woman),CLIP Cluster 5,7,Fragmented/Shackled Bodies & Counter-Gaze,CLIP Cluster,0.2339,2.17e-28
+T24 (collage),CLIP Cluster 2,24,Pastoral Escape & Tactile Disalienation,CLIP Cluster,0.2266,1.034e-26
+T20 (hat),CLIP Cluster 5,20,Fragmented/Shackled Bodies & Counter-Gaze,CLIP Cluster,0.221,1.832e-25
+T18 (serene),Formal: Brightness (Intensity),18,Pastoral Escape & Tactile Disalienation,Formal HCI Color/Light,-0.2098,3.801e-11
+T11 (eye),Medium: Graphite/Ink on Paper,11,Panoptic Eyes & Watchtowers,Material Medium,0.2066,2.2239999999999997e-22
+T15 (dog),CLIP Cluster 1,15,General Carceral Iconography,CLIP Cluster,0.1977,1.3170000000000001e-20
+T04 (paint),CLIP Cluster 5,4,General Carceral Iconography,CLIP Cluster,-0.1932,9.945e-20
+T18 (serene),Medium: Standard Paint/Canvas,18,Pastoral Escape & Tactile Disalienation,Material Medium,0.1868,1.633e-18
+T12 (cell),CLIP Cluster 1,12,Fragmented/Shackled Bodies & Counter-Gaze,CLIP Cluster,0.1851,3.325e-18
+T18 (serene),Formal: Saturation (Chroma),18,Pastoral Escape & Tactile Disalienation,Formal HCI Color/Light,0.1731,5.463e-8
+T18 (serene),CLIP Cluster 5,18,Pastoral Escape & Tactile Disalienation,CLIP Cluster,-0.1701,1.384e-15
+T20 (hat),Medium: Graphite/Ink on Paper,20,Fragmented/Shackled Bodies & Counter-Gaze,Material Medium,0.1629,2.13e-14
+T11 (eye),Medium: Standard Paint/Canvas,11,Panoptic Eyes & Watchtowers,Material Medium,-0.161,4.354e-14
+T18 (serene),CLIP Cluster 1,18,Pastoral Escape & Tactile Disalienation,CLIP Cluster,-0.161,4.28e-14
+T18 (serene),Medium: Graphite/Ink on Paper,18,Pastoral Escape & Tactile Disalienation,Material Medium,-0.1602,5.823e-14
+T25 (fabric),Medium: Mixed/Sculptural,25,Pastoral Escape & Tactile Disalienation,Material Medium,0.159,8.76e-14
+T10 (flower),CLIP Cluster 2,10,Pastoral Escape & Tactile Disalienation,CLIP Cluster,0.1555,3.049e-13
+T20 (hat),CLIP Cluster 3,20,Fragmented/Shackled Bodies & Counter-Gaze,CLIP Cluster,-0.1524,9.229e-13
+T24 (collage),Medium: Mixed/Sculptural,24,Pastoral Escape & Tactile Disalienation,Material Medium,0.1509,1.517e-12
+T21 (wooden),Formal: Warm Color Ratio,21,Forensic Numbers & Barcodes,Formal HCI Color/Light,0.1453,5.303e-6
+T07 (woman),CLIP Cluster 3,7,Fragmented/Shackled Bodies & Counter-Gaze,CLIP Cluster,-0.1452,1.031e-11
+T07 (woman),CLIP Cluster 2,7,Fragmented/Shackled Bodies & Counter-Gaze,CLIP Cluster,-0.1422,2.776e-11
+T04 (paint),CLIP Cluster 1,4,General Carceral Iconography,CLIP Cluster,0.1421,2.831e-11
+T06 (hand),CLIP Cluster 1,6,Fragmented/Shackled Bodies & Counter-Gaze,CLIP Cluster,0.1404,4.937e-11
+T11 (eye),CLIP Cluster 3,11,Panoptic Eyes & Watchtowers,CLIP Cluster,-0.1355,2.257e-10
+T21 (wooden),Medium: Graphite/Ink on Paper,21,Forensic Numbers & Barcodes,Material Medium,-0.1338,3.787e-10
+T10 (flower),Formal: Saturation (Chroma),10,Pastoral Escape & Tactile Disalienation,Formal HCI Color/Light,0.1314,3.897e-5
+T20 (hat),Medium: Standard Paint/Canvas,20,Fragmented/Shackled Bodies & Counter-Gaze,Material Medium,-0.1292,1.471e-9
+T20 (hat),CLIP Cluster 2,20,Fragmented/Shackled Bodies & Counter-Gaze,CLIP Cluster,-0.1272,2.693e-9
+T20 (hat),CLIP Cluster 6,20,Fragmented/Shackled Bodies & Counter-Gaze,CLIP Cluster,-0.1267,3.1e-9
+T07 (woman),CLIP Cluster 1,7,Fragmented/Shackled Bodies & Counter-Gaze,CLIP Cluster,0.1255,4.355e-9
+T02 (body),CLIP Cluster 1,2,Pastoral Escape & Tactile Disalienation,CLIP Cluster,-0.125,4.946e-9
+T05 (cage),Formal: Brightness (Intensity),5,Fragmented/Shackled Bodies & Counter-Gaze,Formal HCI Color/Light,0.1217,1.411e-4
+T06 (hand),CLIP Cluster 3,6,Fragmented/Shackled Bodies & Counter-Gaze,CLIP Cluster,-0.12,2.007e-8
+T20 (hat),CLIP Cluster 1,20,Fragmented/Shackled Bodies & Counter-Gaze,CLIP Cluster,0.1195,2.259e-8
+T23 (significant),CLIP Cluster 3,23,Pastoral Escape & Tactile Disalienation,CLIP Cluster,0.1168,4.724e-8
+T12 (cell),CLIP Cluster 3,12,Fragmented/Shackled Bodies & Counter-Gaze,CLIP Cluster,-0.1164,5.211e-8
+T23 (significant),Medium: Graphite/Ink on Paper,23,Pastoral Escape & Tactile Disalienation,Material Medium,0.1158,6.199e-8
+T01 (surveillance),CLIP Cluster 2,1,Panoptic Eyes & Watchtowers,CLIP Cluster,0.1152,7.214e-8
+T01 (surveillance),CLIP Cluster 3,1,Panoptic Eyes & Watchtowers,CLIP Cluster,-0.1146,8.356e-8
+T03 (clock),CLIP Cluster 6,3,Fragmented/Shackled Bodies & Counter-Gaze,CLIP Cluster,-0.1143,9.111e-8
+T23 (significant),CLIP Cluster 5,23,Pastoral Escape & Tactile Disalienation,CLIP Cluster,0.1142,9.292e-8
+T05 (cage),Medium: Standard Paint/Canvas,5,Fragmented/Shackled Bodies & Counter-Gaze,Material Medium,-0.1141,9.654e-8
+T08 (cityscape),CLIP Cluster 3,8,Panoptic Eyes & Watchtowers,CLIP Cluster,0.1127,1.359e-7
+T11 (eye),CLIP Cluster 6,11,Panoptic Eyes & Watchtowers,CLIP Cluster,-0.1116,1.814e-7
+T24 (collage),CLIP Cluster 3,24,Pastoral Escape & Tactile Disalienation,CLIP Cluster,-0.1108,2.235e-7
+T13 (item),CLIP Cluster 1,13,General Carceral Iconography,CLIP Cluster,0.1104,2.491e-7
+T20 (hat),Formal: Saturation (Chroma),20,Fragmented/Shackled Bodies & Counter-Gaze,Formal HCI Color/Light,-0.11,5.866e-4
+T18 (serene),CLIP Cluster 2,18,Pastoral Escape & Tactile Disalienation,CLIP Cluster,-0.1098,2.868e-7
+T07 (woman),CLIP Cluster 6,7,Fragmented/Shackled Bodies & Counter-Gaze,CLIP Cluster,-0.1097,2.913e-7
+T23 (significant),Medium: Standard Paint/Canvas,23,Pastoral Escape & Tactile Disalienation,Material Medium,-0.1096,3.006e-7
+T21 (wooden),CLIP Cluster 5,21,Forensic Numbers & Barcodes,CLIP Cluster,-0.1085,3.928e-7
+T10 (flower),Formal: Brightness (Intensity),10,Pastoral Escape & Tactile Disalienation,Formal HCI Color/Light,-0.1075,7.744e-4
+T17 (sensory),CLIP Cluster 6,17,Panoptic Eyes & Watchtowers,CLIP Cluster,-0.1065,6.517e-7
+T23 (significant),CLIP Cluster 1,23,Pastoral Escape & Tactile Disalienation,CLIP Cluster,-0.1064,6.662e-7
+T05 (cage),CLIP Cluster 4,5,Fragmented/Shackled Bodies & Counter-Gaze,CLIP Cluster,0.1055,8.217e-7
+T10 (flower),Medium: Graphite/Ink on Paper,10,Pastoral Escape & Tactile Disalienation,Material Medium,-0.105,9.217e-7
+T11 (eye),Formal: Brightness (Intensity),11,Panoptic Eyes & Watchtowers,Formal HCI Color/Light,0.1045,0.001088
+T06 (hand),CLIP Cluster 6,6,Fragmented/Shackled Bodies & Counter-Gaze,CLIP Cluster,-0.1036,1.305e-6
+T10 (flower),CLIP Cluster 5,10,Pastoral Escape & Tactile Disalienation,CLIP Cluster,-0.1031,1.443e-6
+T24 (collage),Medium: Standard Paint/Canvas,24,Pastoral Escape & Tactile Disalienation,Material Medium,-0.1031,1.444e-6
+T12 (cell),CLIP Cluster 6,12,Fragmented/Shackled Bodies & Counter-Gaze,CLIP Cluster,-0.1024,1.734e-6
+T09 (movement),CLIP Cluster 1,9,General Carceral Iconography,CLIP Cluster,-0.1011,2.314e-6
+T09 (movement),Formal: Warm Color Ratio,9,General Carceral Iconography,Formal HCI Color/Light,-0.1011,0.001582
+T24 (collage),CLIP Cluster 1,24,Pastoral Escape & Tactile Disalienation,CLIP Cluster,-0.1002,2.845e-6
+T14 (heart),CLIP Cluster 3,14,Pastoral Escape & Tactile Disalienation,CLIP Cluster,-0.0996,3.304e-6
+T05 (cage),Medium: Mixed/Sculptural,5,Fragmented/Shackled Bodies & Counter-Gaze,Material Medium,0.0987,4.028e-6
+T25 (fabric),CLIP Cluster 2,25,Pastoral Escape & Tactile Disalienation,CLIP Cluster,0.0974,5.374e-6
+T24 (collage),Formal: Brightness (Intensity),24,Pastoral Escape & Tactile Disalienation,Formal HCI Color/Light,0.0973,0.002375
+T15 (dog),CLIP Cluster 2,15,General Carceral Iconography,CLIP Cluster,-0.0964,6.697e-6
+T13 (item),CLIP Cluster 5,13,General Carceral Iconography,CLIP Cluster,-0.0961,7.145e-6
+T09 (movement),CLIP Cluster 5,9,General Carceral Iconography,CLIP Cluster,-0.096,7.38e-6
+T13 (item),CLIP Cluster 6,13,General Carceral Iconography,CLIP Cluster,-0.0958,7.705e-6
+T04 (paint),CLIP Cluster 6,4,General Carceral Iconography,CLIP Cluster,-0.0945,1.007e-5
+T15 (dog),CLIP Cluster 6,15,General Carceral Iconography,CLIP Cluster,-0.0942,1.083e-5
+T02 (body),CLIP Cluster 2,2,Pastoral Escape & Tactile Disalienation,CLIP Cluster,-0.0941,1.105e-5
+T01 (surveillance),CLIP Cluster 6,1,Panoptic Eyes & Watchtowers,CLIP Cluster,-0.0932,1.346e-5
+T04 (paint),CLIP Cluster 3,4,General Carceral Iconography,CLIP Cluster,0.0925,1.564e-5
+T24 (collage),CLIP Cluster 4,24,Pastoral Escape & Tactile Disalienation,CLIP Cluster,0.0918,1.795e-5
+T07 (woman),CLIP Cluster 4,7,Fragmented/Shackled Bodies & Counter-Gaze,CLIP Cluster,-0.0912,2.042e-5
+T08 (cityscape),CLIP Cluster 5,8,Panoptic Eyes & Watchtowers,CLIP Cluster,-0.0908,2.233e-5
+T09 (movement),CLIP Cluster 2,9,General Carceral Iconography,CLIP Cluster,-0.0908,2.227e-5
+T24 (collage),CLIP Cluster 6,24,Pastoral Escape & Tactile Disalienation,CLIP Cluster,-0.0901,2.571e-5
+T14 (heart),CLIP Cluster 1,14,Pastoral Escape & Tactile Disalienation,CLIP Cluster,-0.0896,2.845e-5
+T11 (eye),Formal: Saturation (Chroma),11,Panoptic Eyes & Watchtowers,Formal HCI Color/Light,-0.0893,0.005281
+T11 (eye),Formal: Warm Color Ratio,11,Panoptic Eyes & Watchtowers,Formal HCI Color/Light,-0.0884,0.00575
+T25 (fabric),Medium: Graphite/Ink on Paper,25,Pastoral Escape & Tactile Disalienation,Material Medium,-0.0881,3.898e-5
+T23 (significant),CLIP Cluster 6,23,Pastoral Escape & Tactile Disalienation,CLIP Cluster,-0.0854,6.708e-5
+T11 (eye),CLIP Cluster 4,11,Panoptic Eyes & Watchtowers,CLIP Cluster,-0.085,7.255e-5
+T25 (fabric),Formal: Saturation (Chroma),25,Pastoral Escape & Tactile Disalienation,Formal HCI Color/Light,0.0842,0.008529
+T21 (wooden),CLIP Cluster 1,21,Forensic Numbers & Barcodes,CLIP Cluster,-0.0839,8.978e-5
+T03 (clock),CLIP Cluster 2,3,Fragmented/Shackled Bodies & Counter-Gaze,CLIP Cluster,0.0824,1.208e-4
+T21 (wooden),Formal: Brightness (Intensity),21,Forensic Numbers & Barcodes,Formal HCI Color/Light,0.0816,0.01085
+T16 (skull),CLIP Cluster 3,16,Telephonic/Screen Separation & Digital Mediation,CLIP Cluster,-0.0794,2.092e-4
+T10 (flower),CLIP Cluster 6,10,Pastoral Escape & Tactile Disalienation,CLIP Cluster,-0.0787,2.395e-4
+T22 (brushwork),Medium: Standard Paint/Canvas,22,Pastoral Escape & Tactile Disalienation,Material Medium,0.0778,2.806e-4
+T11 (eye),Medium: Mixed/Sculptural,11,Panoptic Eyes & Watchtowers,Material Medium,-0.0773,3.086e-4
+T18 (serene),CLIP Cluster 6,18,Pastoral Escape & Tactile Disalienation,CLIP Cluster,-0.0771,3.23e-4
+T22 (brushwork),Medium: Graphite/Ink on Paper,22,Pastoral Escape & Tactile Disalienation,Material Medium,-0.0767,3.432e-4
+T07 (woman),Medium: Graphite/Ink on Paper,7,Fragmented/Shackled Bodies & Counter-Gaze,Material Medium,0.0761,3.842e-4
+T09 (movement),Medium: Standard Paint/Canvas,9,General Carceral Iconography,Material Medium,0.0759,3.997e-4
+T21 (wooden),CLIP Cluster 3,21,Forensic Numbers & Barcodes,CLIP Cluster,-0.0757,4.114e-4
+T03 (clock),CLIP Cluster 3,3,Fragmented/Shackled Bodies & Counter-Gaze,CLIP Cluster,-0.075,4.632e-4
+T22 (brushwork),Formal: Brightness (Intensity),22,Pastoral Escape & Tactile Disalienation,Formal HCI Color/Light,-0.0738,0.02121
+T17 (sensory),Formal: Saturation (Chroma),17,Panoptic Eyes & Watchtowers,Formal HCI Color/Light,-0.0737,0.02148
+T14 (heart),CLIP Cluster 6,14,Pastoral Escape & Tactile Disalienation,CLIP Cluster,-0.0724,7.34e-4
+T04 (paint),CLIP Cluster 4,4,General Carceral Iconography,CLIP Cluster,-0.0721,7.721e-4
+T08 (cityscape),Medium: Standard Paint/Canvas,8,Panoptic Eyes & Watchtowers,Material Medium,0.0715,8.544e-4
+T15 (dog),Medium: Mixed/Sculptural,15,General Carceral Iconography,Material Medium,-0.0715,8.566e-4
+T02 (body),CLIP Cluster 5,2,Pastoral Escape & Tactile Disalienation,CLIP Cluster,-0.0708,9.63e-4
+T07 (woman),Medium: Contraband/Found Carceral Material,7,Fragmented/Shackled Bodies & Counter-Gaze,Material Medium,-0.0703,0.001036
+T21 (wooden),Medium: Standard Paint/Canvas,21,Forensic Numbers & Barcodes,Material Medium,-0.0701,0.001071
+T22 (brushwork),CLIP Cluster 6,22,Pastoral Escape & Tactile Disalienation,CLIP Cluster,-0.0689,0.001296
+T10 (flower),Medium: Mixed/Sculptural,10,Pastoral Escape & Tactile Disalienation,Material Medium,0.0679,0.001539
+T16 (skull),CLIP Cluster 5,16,Telephonic/Screen Separation & Digital Mediation,CLIP Cluster,0.0678,0.00156
+T05 (cage),Medium: Graphite/Ink on Paper,5,Fragmented/Shackled Bodies & Counter-Gaze,Material Medium,0.0675,0.001649
+T22 (brushwork),CLIP Cluster 1,22,Pastoral Escape & Tactile Disalienation,CLIP Cluster,0.0667,0.001864
+T05 (cage),CLIP Cluster 6,5,Fragmented/Shackled Bodies & Counter-Gaze,CLIP Cluster,-0.0652,0.002351
+T05 (cage),Formal: Saturation (Chroma),5,Fragmented/Shackled Bodies & Counter-Gaze,Formal HCI Color/Light,-0.0649,0.04288
+T21 (wooden),CLIP Cluster 6,21,Forensic Numbers & Barcodes,CLIP Cluster,-0.0641,0.002788
+T17 (sensory),CLIP Cluster 3,17,Panoptic Eyes & Watchtowers,CLIP Cluster,-0.0637,0.002971
+T12 (cell),Formal: Saturation (Chroma),12,Fragmented/Shackled Bodies & Counter-Gaze,Formal HCI Color/Light,-0.0634,0.04793
+T10 (flower),Medium: Contraband/Found Carceral Material,10,Pastoral Escape & Tactile Disalienation,Material Medium,0.0632,0.003176
+T15 (dog),CLIP Cluster 4,15,General Carceral Iconography,CLIP Cluster,-0.0631,0.00325
+T16 (skull),CLIP Cluster 6,16,Telephonic/Screen Separation & Digital Mediation,CLIP Cluster,-0.0628,0.003403
+T06 (hand),Formal: Saturation (Chroma),6,Fragmented/Shackled Bodies & Counter-Gaze,Formal HCI Color/Light,0.0616,0.05466
+T07 (woman),Formal: Brightness (Intensity),7,Fragmented/Shackled Bodies & Counter-Gaze,Formal HCI Color/Light,0.0611,0.05649
+T19 (car),CLIP Cluster 3,19,General Carceral Iconography,CLIP Cluster,0.0608,0.004551
+T04 (paint),CLIP Cluster 2,4,General Carceral Iconography,CLIP Cluster,0.0593,0.005647
+T13 (item),Formal: Warm Color Ratio,13,General Carceral Iconography,Formal HCI Color/Light,0.0592,0.065
+T17 (sensory),CLIP Cluster 2,17,Panoptic Eyes & Watchtowers,CLIP Cluster,0.0592,0.00573
+T08 (cityscape),Medium: Graphite/Ink on Paper,8,Panoptic Eyes & Watchtowers,Material Medium,-0.0583,0.006552
+T08 (cityscape),CLIP Cluster 6,8,Panoptic Eyes & Watchtowers,CLIP Cluster,-0.0583,0.006567
+T11 (eye),CLIP Cluster 1,11,Panoptic Eyes & Watchtowers,CLIP Cluster,-0.0583,0.006524
+T25 (fabric),CLIP Cluster 5,25,Pastoral Escape & Tactile Disalienation,CLIP Cluster,-0.058,0.006858
+T24 (collage),Formal: Saturation (Chroma),24,Pastoral Escape & Tactile Disalienation,Formal HCI Color/Light,-0.0579,0.07095
+T20 (hat),CLIP Cluster 4,20,Fragmented/Shackled Bodies & Counter-Gaze,CLIP Cluster,-0.0578,0.007001
+T02 (body),CLIP Cluster 4,2,Pastoral Escape & Tactile Disalienation,CLIP Cluster,-0.0567,0.008131
+T18 (serene),CLIP Cluster 4,18,Pastoral Escape & Tactile Disalienation,CLIP Cluster,-0.0566,0.008248
+T25 (fabric),CLIP Cluster 6,25,Pastoral Escape & Tactile Disalienation,CLIP Cluster,-0.0564,0.008556
+T10 (flower),CLIP Cluster 1,10,Pastoral Escape & Tactile Disalienation,CLIP Cluster,-0.0561,0.008874
+T12 (cell),Medium: Mixed/Sculptural,12,Fragmented/Shackled Bodies & Counter-Gaze,Material Medium,-0.0561,0.008888
+T04 (paint),Medium: Mixed/Sculptural,4,General Carceral Iconography,Material Medium,-0.0558,0.00929
+T20 (hat),Formal: Brightness (Intensity),20,Fragmented/Shackled Bodies & Counter-Gaze,Formal HCI Color/Light,0.0548,0.08734
+T11 (eye),CLIP Cluster 2,11,Panoptic Eyes & Watchtowers,CLIP Cluster,-0.0545,0.01102
+T05 (cage),CLIP Cluster 1,5,Fragmented/Shackled Bodies & Counter-Gaze,CLIP Cluster,-0.0544,0.01123
+T14 (heart),Medium: Standard Paint/Canvas,14,Pastoral Escape & Tactile Disalienation,Material Medium,-0.0543,0.01141
+T05 (cage),CLIP Cluster 5,5,Fragmented/Shackled Bodies & Counter-Gaze,CLIP Cluster,0.0541,0.01167
+T22 (brushwork),Medium: Contraband/Found Carceral Material,22,Pastoral Escape & Tactile Disalienation,Material Medium,0.053900000000000003,0.01195
+T05 (cage),CLIP Cluster 3,5,Fragmented/Shackled Bodies & Counter-Gaze,CLIP Cluster,-0.0538,0.01203
+T14 (heart),CLIP Cluster 5,14,Pastoral Escape & Tactile Disalienation,CLIP Cluster,-0.0537,0.01225
+T10 (flower),Medium: Standard Paint/Canvas,10,Pastoral Escape & Tactile Disalienation,Material Medium,0.0515,0.01631
+T19 (car),CLIP Cluster 6,19,General Carceral Iconography,CLIP Cluster,-0.0514,0.01664
+T19 (car),CLIP Cluster 2,19,General Carceral Iconography,CLIP Cluster,-0.0512,0.01695
+T09 (movement),Medium: Graphite/Ink on Paper,9,General Carceral Iconography,Material Medium,-0.0505,0.01861
+T01 (surveillance),Medium: Mixed/Sculptural,1,Panoptic Eyes & Watchtowers,Material Medium,0.0504,0.01872
+T21 (wooden),CLIP Cluster 2,21,Forensic Numbers & Barcodes,CLIP Cluster,-0.049,0.02231
+T02 (body),Medium: Mixed/Sculptural,2,Pastoral Escape & Tactile Disalienation,Material Medium,-0.0486,0.02332
+T24 (collage),Medium: Contraband/Found Carceral Material,24,Pastoral Escape & Tactile Disalienation,Material Medium,0.0484,0.024
+T18 (serene),Medium: Mixed/Sculptural,18,Pastoral Escape & Tactile Disalienation,Material Medium,-0.0479,0.02565
+T24 (collage),CLIP Cluster 5,24,Pastoral Escape & Tactile Disalienation,CLIP Cluster,-0.0475,0.02692
+T09 (movement),CLIP Cluster 4,9,General Carceral Iconography,CLIP Cluster,-0.047,0.02833
+T17 (sensory),Formal: Brightness (Intensity),17,Panoptic Eyes & Watchtowers,Formal HCI Color/Light,0.0468,0.1441
+T23 (significant),CLIP Cluster 4,23,Pastoral Escape & Tactile Disalienation,CLIP Cluster,-0.0463,0.03094
+T12 (cell),Formal: Brightness (Intensity),12,Fragmented/Shackled Bodies & Counter-Gaze,Formal HCI Color/Light,-0.0458,0.1536
+T10 (flower),CLIP Cluster 3,10,Pastoral Escape & Tactile Disalienation,CLIP Cluster,0.0449,0.03638
+T12 (cell),CLIP Cluster 4,12,Fragmented/Shackled Bodies & Counter-Gaze,CLIP Cluster,-0.0442,0.03932
+T03 (clock),Medium: Standard Paint/Canvas,3,Fragmented/Shackled Bodies & Counter-Gaze,Material Medium,-0.0421,0.04988
+T20 (hat),Medium: Mixed/Sculptural,20,Fragmented/Shackled Bodies & Counter-Gaze,Material Medium,-0.0418,0.05146
+T06 (hand),CLIP Cluster 5,6,Fragmented/Shackled Bodies & Counter-Gaze,CLIP Cluster,0.0417,0.05197
+T15 (dog),Medium: Standard Paint/Canvas,15,General Carceral Iconography,Material Medium,0.0408,0.05687
+T17 (sensory),Formal: Warm Color Ratio,17,Panoptic Eyes & Watchtowers,Formal HCI Color/Light,-0.0406,0.2058
+T09 (movement),CLIP Cluster 3,9,General Carceral Iconography,CLIP Cluster,-0.0405,0.05883
+T14 (heart),Medium: Graphite/Ink on Paper,14,Pastoral Escape & Tactile Disalienation,Material Medium,0.0398,0.06375
+T21 (wooden),Formal: Saturation (Chroma),21,Forensic Numbers & Barcodes,Formal HCI Color/Light,-0.0398,0.2145
+T06 (hand),Medium: Contraband/Found Carceral Material,6,Fragmented/Shackled Bodies & Counter-Gaze,Material Medium,-0.0396,0.06467
+T09 (movement),Medium: Mixed/Sculptural,9,General Carceral Iconography,Material Medium,-0.0396,0.06515
+T17 (sensory),Medium: Graphite/Ink on Paper,17,Panoptic Eyes & Watchtowers,Material Medium,0.0396,0.06481
+T22 (brushwork),Medium: Mixed/Sculptural,22,Pastoral Escape & Tactile Disalienation,Material Medium,-0.039,0.06931
+T01 (surveillance),Medium: Standard Paint/Canvas,1,Panoptic Eyes & Watchtowers,Material Medium,-0.0387,0.07102
+T12 (cell),Medium: Contraband/Found Carceral Material,12,Fragmented/Shackled Bodies & Counter-Gaze,Material Medium,-0.0387,0.0713
+T16 (skull),Medium: Standard Paint/Canvas,16,Telephonic/Screen Separation & Digital Mediation,Material Medium,-0.0387,0.07091
+T17 (sensory),Medium: Standard Paint/Canvas,17,Panoptic Eyes & Watchtowers,Material Medium,-0.0386,0.07192
+T20 (hat),Medium: Contraband/Found Carceral Material,20,Fragmented/Shackled Bodies & Counter-Gaze,Material Medium,-0.0378,0.07787
+T14 (heart),Formal: Warm Color Ratio,14,Pastoral Escape & Tactile Disalienation,Formal HCI Color/Light,-0.0377,0.2396
+T17 (sensory),Medium: Contraband/Found Carceral Material,17,Panoptic Eyes & Watchtowers,Material Medium,-0.0377,0.07895
+T10 (flower),Formal: Warm Color Ratio,10,Pastoral Escape & Tactile Disalienation,Formal HCI Color/Light,0.0372,0.2466
+T25 (fabric),Formal: Brightness (Intensity),25,Pastoral Escape & Tactile Disalienation,Formal HCI Color/Light,-0.0372,0.2461
+T06 (hand),Formal: Warm Color Ratio,6,Fragmented/Shackled Bodies & Counter-Gaze,Formal HCI Color/Light,0.0371,0.2476
+T13 (item),CLIP Cluster 2,13,General Carceral Iconography,CLIP Cluster,0.037,0.08466
+T07 (woman),Medium: Standard Paint/Canvas,7,Fragmented/Shackled Bodies & Counter-Gaze,Material Medium,-0.0368,0.08669
+T15 (dog),Formal: Warm Color Ratio,15,General Carceral Iconography,Formal HCI Color/Light,0.0362,0.259
+T06 (hand),Formal: Brightness (Intensity),6,Fragmented/Shackled Bodies & Counter-Gaze,Formal HCI Color/Light,-0.036,0.2611
+T16 (skull),Medium: Mixed/Sculptural,16,Telephonic/Screen Separation & Digital Mediation,Material Medium,0.0353,0.09948
+T07 (woman),Medium: Mixed/Sculptural,7,Fragmented/Shackled Bodies & Counter-Gaze,Material Medium,-0.0345,0.1077
+T16 (skull),Medium: Contraband/Found Carceral Material,16,Telephonic/Screen Separation & Digital Mediation,Material Medium,0.0344,0.1093
+T19 (car),Medium: Mixed/Sculptural,19,General Carceral Iconography,Material Medium,-0.0341,0.1118
+T03 (clock),Medium: Graphite/Ink on Paper,3,Fragmented/Shackled Bodies & Counter-Gaze,Material Medium,0.0338,0.1155
+T08 (cityscape),CLIP Cluster 2,8,Panoptic Eyes & Watchtowers,CLIP Cluster,0.0337,0.116
+T12 (cell),Medium: Graphite/Ink on Paper,12,Fragmented/Shackled Bodies & Counter-Gaze,Material Medium,0.0329,0.1255
+T03 (clock),CLIP Cluster 1,3,Fragmented/Shackled Bodies & Counter-Gaze,CLIP Cluster,0.0325,0.1294
+T03 (clock),CLIP Cluster 4,3,Fragmented/Shackled Bodies & Counter-Gaze,CLIP Cluster,-0.0324,0.1311
+T25 (fabric),CLIP Cluster 4,25,Pastoral Escape & Tactile Disalienation,CLIP Cluster,0.0323,0.1324
+T08 (cityscape),CLIP Cluster 4,8,Panoptic Eyes & Watchtowers,CLIP Cluster,-0.0316,0.1408
+T02 (body),Formal: Warm Color Ratio,2,Pastoral Escape & Tactile Disalienation,Formal HCI Color/Light,-0.0315,0.3264
+T01 (surveillance),Formal: Saturation (Chroma),1,Panoptic Eyes & Watchtowers,Formal HCI Color/Light,-0.0313,0.3286
+T02 (body),Medium: Contraband/Found Carceral Material,2,Pastoral Escape & Tactile Disalienation,Material Medium,-0.0306,0.1533
+T02 (body),Formal: Saturation (Chroma),2,Pastoral Escape & Tactile Disalienation,Formal HCI Color/Light,0.0304,0.3427
+T12 (cell),CLIP Cluster 5,12,Fragmented/Shackled Bodies & Counter-Gaze,CLIP Cluster,-0.0299,0.164
+T15 (dog),Medium: Contraband/Found Carceral Material,15,General Carceral Iconography,Material Medium,-0.0298,0.1643
+T14 (heart),Medium: Mixed/Sculptural,14,Pastoral Escape & Tactile Disalienation,Material Medium,0.0295,0.1693
+T06 (hand),Medium: Mixed/Sculptural,6,Fragmented/Shackled Bodies & Counter-Gaze,Material Medium,-0.0294,0.1704
+T08 (cityscape),Medium: Mixed/Sculptural,8,Panoptic Eyes & Watchtowers,Material Medium,-0.0293,0.1717
+T23 (significant),CLIP Cluster 2,23,Pastoral Escape & Tactile Disalienation,CLIP Cluster,-0.0291,0.1748
+T13 (item),Medium: Mixed/Sculptural,13,General Carceral Iconography,Material Medium,-0.0285,0.1842
+T15 (dog),Formal: Brightness (Intensity),15,General Carceral Iconography,Formal HCI Color/Light,-0.0283,0.3777
+T19 (car),CLIP Cluster 1,19,General Carceral Iconography,CLIP Cluster,0.0283,0.1876
+T13 (item),CLIP Cluster 4,13,General Carceral Iconography,CLIP Cluster,-0.0278,0.1944
+T14 (heart),Formal: Saturation (Chroma),14,Pastoral Escape & Tactile Disalienation,Formal HCI Color/Light,-0.0275,0.3913
+T17 (sensory),CLIP Cluster 5,17,Panoptic Eyes & Watchtowers,CLIP Cluster,0.0273,0.204
+T22 (brushwork),CLIP Cluster 5,22,Pastoral Escape & Tactile Disalienation,CLIP Cluster,-0.0265,0.2164
+T06 (hand),CLIP Cluster 2,6,Fragmented/Shackled Bodies & Counter-Gaze,CLIP Cluster,-0.0258,0.2286
+T15 (dog),CLIP Cluster 5,15,General Carceral Iconography,CLIP Cluster,-0.0258,0.2291
+T14 (heart),CLIP Cluster 4,14,Pastoral Escape & Tactile Disalienation,CLIP Cluster,0.0251,0.2426
+T03 (clock),Medium: Mixed/Sculptural,3,Fragmented/Shackled Bodies & Counter-Gaze,Material Medium,0.025,0.244
+T06 (hand),CLIP Cluster 4,6,Fragmented/Shackled Bodies & Counter-Gaze,CLIP Cluster,-0.025,0.2438
+T04 (paint),Formal: Warm Color Ratio,4,General Carceral Iconography,Formal HCI Color/Light,0.0249,0.4373
+T25 (fabric),CLIP Cluster 1,25,Pastoral Escape & Tactile Disalienation,CLIP Cluster,-0.0249,0.2467
+T13 (item),Medium: Contraband/Found Carceral Material,13,General Carceral Iconography,Material Medium,0.0247,0.2494
+T22 (brushwork),Formal: Saturation (Chroma),22,Pastoral Escape & Tactile Disalienation,Formal HCI Color/Light,0.0247,0.441
+T17 (sensory),Medium: Mixed/Sculptural,17,Panoptic Eyes & Watchtowers,Material Medium,0.0232,0.2795
+T19 (car),CLIP Cluster 4,19,General Carceral Iconography,CLIP Cluster,0.0227,0.2898
+T09 (movement),Medium: Contraband/Found Carceral Material,9,General Carceral Iconography,Material Medium,-0.0222,0.3004
+T19 (car),Formal: Warm Color Ratio,19,General Carceral Iconography,Formal HCI Color/Light,-0.0212,0.5082
+T06 (hand),Medium: Graphite/Ink on Paper,6,Fragmented/Shackled Bodies & Counter-Gaze,Material Medium,0.0209,0.3289
+T05 (cage),CLIP Cluster 2,5,Fragmented/Shackled Bodies & Counter-Gaze,CLIP Cluster,0.0202,0.3476
+T16 (skull),CLIP Cluster 1,16,Telephonic/Screen Separation & Digital Mediation,CLIP Cluster,0.0198,0.356
+T11 (eye),Medium: Contraband/Found Carceral Material,11,Panoptic Eyes & Watchtowers,Material Medium,-0.0197,0.3589
+T01 (surveillance),Medium: Graphite/Ink on Paper,1,Panoptic Eyes & Watchtowers,Material Medium,0.0193,0.3677
+T22 (brushwork),CLIP Cluster 4,22,Pastoral Escape & Tactile Disalienation,CLIP Cluster,0.0193,0.3678
+T07 (woman),Formal: Warm Color Ratio,7,Fragmented/Shackled Bodies & Counter-Gaze,Formal HCI Color/Light,0.0189,0.5564
+T23 (significant),Medium: Mixed/Sculptural,23,Pastoral Escape & Tactile Disalienation,Material Medium,-0.0184,0.3914
+T08 (cityscape),Formal: Warm Color Ratio,8,Panoptic Eyes & Watchtowers,Formal HCI Color/Light,-0.0183,0.5691
+T03 (clock),Formal: Brightness (Intensity),3,Fragmented/Shackled Bodies & Counter-Gaze,Formal HCI Color/Light,-0.0179,0.5765
+T24 (collage),Formal: Warm Color Ratio,24,Pastoral Escape & Tactile Disalienation,Formal HCI Color/Light,-0.0173,0.5897
+T18 (serene),Medium: Contraband/Found Carceral Material,18,Pastoral Escape & Tactile Disalienation,Material Medium,-0.0171,0.4242
+T01 (surveillance),CLIP Cluster 1,1,Panoptic Eyes & Watchtowers,CLIP Cluster,0.0169,0.4297
+T02 (body),Medium: Standard Paint/Canvas,2,Pastoral Escape & Tactile Disalienation,Material Medium,0.0169,0.4322
+T07 (woman),Formal: Saturation (Chroma),7,Fragmented/Shackled Bodies & Counter-Gaze,Formal HCI Color/Light,-0.0169,0.5993
+T02 (body),Medium: Graphite/Ink on Paper,2,Pastoral Escape & Tactile Disalienation,Material Medium,0.0163,0.4484
+T16 (skull),CLIP Cluster 4,16,Telephonic/Screen Separation & Digital Mediation,CLIP Cluster,0.0162,0.4516
+T01 (surveillance),CLIP Cluster 4,1,Panoptic Eyes & Watchtowers,CLIP Cluster,0.0159,0.4597
+T24 (collage),Medium: Graphite/Ink on Paper,24,Pastoral Escape & Tactile Disalienation,Material Medium,0.0156,0.4664
+T08 (cityscape),Formal: Brightness (Intensity),8,Panoptic Eyes & Watchtowers,Formal HCI Color/Light,-0.0151,0.6383
+T01 (surveillance),Medium: Contraband/Found Carceral Material,1,Panoptic Eyes & Watchtowers,Material Medium,-0.0149,0.4869
+T03 (clock),CLIP Cluster 5,3,Fragmented/Shackled Bodies & Counter-Gaze,CLIP Cluster,0.0146,0.4965
+T22 (brushwork),Formal: Warm Color Ratio,22,Pastoral Escape & Tactile Disalienation,Formal HCI Color/Light,0.014,0.6622
+T08 (cityscape),CLIP Cluster 1,8,Panoptic Eyes & Watchtowers,CLIP Cluster,0.0136,0.5274
+T12 (cell),Formal: Warm Color Ratio,12,Fragmented/Shackled Bodies & Counter-Gaze,Formal HCI Color/Light,-0.0132,0.6815
+T23 (significant),Medium: Contraband/Found Carceral Material,23,Pastoral Escape & Tactile Disalienation,Material Medium,0.0127,0.5529
+T01 (surveillance),Formal: Brightness (Intensity),1,Panoptic Eyes & Watchtowers,Formal HCI Color/Light,0.0122,0.7032
+T13 (item),Formal: Brightness (Intensity),13,General Carceral Iconography,Formal HCI Color/Light,-0.0119,0.7118
+T19 (car),Medium: Standard Paint/Canvas,19,General Carceral Iconography,Material Medium,0.0116,0.589
+T16 (skull),Medium: Graphite/Ink on Paper,16,Telephonic/Screen Separation & Digital Mediation,Material Medium,0.0112,0.6028
+T03 (clock),Medium: Contraband/Found Carceral Material,3,Fragmented/Shackled Bodies & Counter-Gaze,Material Medium,-0.0108,0.6152
+T13 (item),CLIP Cluster 3,13,General Carceral Iconography,CLIP Cluster,0.0101,0.639
+T17 (sensory),CLIP Cluster 1,17,Panoptic Eyes & Watchtowers,CLIP Cluster,0.0101,0.6371
+T19 (car),CLIP Cluster 5,19,General Carceral Iconography,CLIP Cluster,-0.0099,0.6456
+T18 (serene),Formal: Warm Color Ratio,18,Pastoral Escape & Tactile Disalienation,Formal HCI Color/Light,0.0098,0.7589
+T22 (brushwork),CLIP Cluster 3,22,Pastoral Escape & Tactile Disalienation,CLIP Cluster,-0.0097,0.6501
+T25 (fabric),Medium: Standard Paint/Canvas,25,Pastoral Escape & Tactile Disalienation,Material Medium,0.0097,0.6514
+T22 (brushwork),CLIP Cluster 2,22,Pastoral Escape & Tactile Disalienation,CLIP Cluster,-0.0094,0.6626
+T13 (item),Medium: Standard Paint/Canvas,13,General Carceral Iconography,Material Medium,0.0091,0.6722
+T10 (flower),CLIP Cluster 4,10,Pastoral Escape & Tactile Disalienation,CLIP Cluster,0.009,0.6737
+T01 (surveillance),Formal: Warm Color Ratio,1,Panoptic Eyes & Watchtowers,Formal HCI Color/Light,0.0087,0.786
+T23 (significant),Formal: Saturation (Chroma),23,Pastoral Escape & Tactile Disalienation,Formal HCI Color/Light,-0.0086,0.7879
+T03 (clock),Formal: Warm Color Ratio,3,Fragmented/Shackled Bodies & Counter-Gaze,Formal HCI Color/Light,-0.0083,0.7961
+T14 (heart),Formal: Brightness (Intensity),14,Pastoral Escape & Tactile Disalienation,Formal HCI Color/Light,0.0083,0.7961
+T01 (surveillance),CLIP Cluster 5,1,Panoptic Eyes & Watchtowers,CLIP Cluster,-0.0082,0.7038
+T17 (sensory),CLIP Cluster 4,17,Panoptic Eyes & Watchtowers,CLIP Cluster,0.0082,0.7027
+T20 (hat),Formal: Warm Color Ratio,20,Fragmented/Shackled Bodies & Counter-Gaze,Formal HCI Color/Light,0.0082,0.799
+T19 (car),Medium: Contraband/Found Carceral Material,19,General Carceral Iconography,Material Medium,-0.0078,0.7152
+T05 (cage),Formal: Warm Color Ratio,5,Fragmented/Shackled Bodies & Counter-Gaze,Formal HCI Color/Light,0.0074,0.8166
+T13 (item),Formal: Saturation (Chroma),13,General Carceral Iconography,Formal HCI Color/Light,-0.0073,0.82
+T16 (skull),Formal: Warm Color Ratio,16,Telephonic/Screen Separation & Digital Mediation,Formal HCI Color/Light,0.0073,0.8198
+T19 (car),Medium: Graphite/Ink on Paper,19,General Carceral Iconography,Material Medium,0.0073,0.7324
+T25 (fabric),CLIP Cluster 3,25,Pastoral Escape & Tactile Disalienation,CLIP Cluster,-0.0072,0.7387
+T16 (skull),Formal: Brightness (Intensity),16,Telephonic/Screen Separation & Digital Mediation,Formal HCI Color/Light,-0.0071,0.8251
+T12 (cell),Medium: Standard Paint/Canvas,12,Fragmented/Shackled Bodies & Counter-Gaze,Material Medium,0.0065,0.7608
+T06 (hand),Medium: Standard Paint/Canvas,6,Fragmented/Shackled Bodies & Counter-Gaze,Material Medium,0.0058,0.7879
+T12 (cell),CLIP Cluster 2,12,Fragmented/Shackled Bodies & Counter-Gaze,CLIP Cluster,0.0058,0.7853
+T25 (fabric),Formal: Warm Color Ratio,25,Pastoral Escape & Tactile Disalienation,Formal HCI Color/Light,0.0052,0.8724
+T02 (body),CLIP Cluster 3,2,Pastoral Escape & Tactile Disalienation,CLIP Cluster,0.0047,0.8274
+T04 (paint),Medium: Contraband/Found Carceral Material,4,General Carceral Iconography,Material Medium,-0.0043,0.8419
+T19 (car),Formal: Brightness (Intensity),19,General Carceral Iconography,Formal HCI Color/Light,-0.0042,0.8948
+T15 (dog),CLIP Cluster 3,15,General Carceral Iconography,CLIP Cluster,0.0041,0.8476
+T13 (item),Medium: Graphite/Ink on Paper,13,General Carceral Iconography,Material Medium,-0.0031,0.8851
+T16 (skull),CLIP Cluster 2,16,Telephonic/Screen Separation & Digital Mediation,CLIP Cluster,-0.0031,0.885
+T25 (fabric),Medium: Contraband/Found Carceral Material,25,Pastoral Escape & Tactile Disalienation,Material Medium,0.003,0.8905
+T15 (dog),Medium: Graphite/Ink on Paper,15,General Carceral Iconography,Material Medium,0.0029,0.8943
+T23 (significant),Formal: Warm Color Ratio,23,Pastoral Escape & Tactile Disalienation,Formal HCI Color/Light,0.0027,0.9317
+T14 (heart),Medium: Contraband/Found Carceral Material,14,Pastoral Escape & Tactile Disalienation,Material Medium,0.0024,0.9127
+T15 (dog),Formal: Saturation (Chroma),15,General Carceral Iconography,Formal HCI Color/Light,-0.0024,0.9402
+T03 (clock),Formal: Saturation (Chroma),3,Fragmented/Shackled Bodies & Counter-Gaze,Formal HCI Color/Light,0.0022,0.9443
+T08 (cityscape),Formal: Saturation (Chroma),8,Panoptic Eyes & Watchtowers,Formal HCI Color/Light,-0.0018,0.9554
+T23 (significant),Formal: Brightness (Intensity),23,Pastoral Escape & Tactile Disalienation,Formal HCI Color/Light,0.0015,0.9622
+T08 (cityscape),Medium: Contraband/Found Carceral Material,8,Panoptic Eyes & Watchtowers,Material Medium,9e-4,0.9653
+T19 (car),Formal: Saturation (Chroma),19,General Carceral Iconography,Formal HCI Color/Light,9e-4,0.9788
+T05 (cage),Medium: Contraband/Found Carceral Material,5,Fragmented/Shackled Bodies & Counter-Gaze,Material Medium,-4e-4,0.9857
+T02 (body),Formal: Brightness (Intensity),2,Pastoral Escape & Tactile Disalienation,Formal HCI Color/Light,3e-4,0.9914
+T16 (skull),Formal: Saturation (Chroma),16,Telephonic/Screen Separation & Digital Mediation,Formal HCI Color/Light,-3e-4,0.9914
