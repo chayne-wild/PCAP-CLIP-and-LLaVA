@@ -1,7 +1,7 @@
 %%R
 # ==============================================================================
-# SCRIPT: scripts/09_qualitative_artwork_dossier.R
-# CHAPTER: Chapter 5 — Cultural Resistance: Counter-Visuality in the PCAP Archive
+# scripts/09_qualitative_artwork_dossier.R
+# Cultural Resistance: Counter-Visuality in the PCAP Archive
 # PURPOSE: Executes stm::findThoughts() combined with joint CLIP-LLaVA composite
 #          Z-score ranking to extract the top 5 exemplar artworks for each of
 #          the 5 target counter-visual motifs. Generates a formatted qualitative
@@ -97,8 +97,14 @@ for (fam in target_families) {
   ft_indices <- unlist(ft_obj$index)
 
   # Compute Joint Composite Score = 0.5 * Z(STM Theta_k) + 0.5 * Z(CLIP Cosine Similarity)
+  # For Family 3 (Fragmented/Shackled Bodies & Counter-Gaze), combine Bodily Autonomy
+  # and Carceral Containment so works depicting human subjects in chains/cells rank highest.
   stm_theta_vec <- theta_mat[, primary_k]
-  clip_score_vec <- meta_df[[clip_col]]
+  if (fam_name == "Fragmented/Shackled Bodies & Counter-Gaze") {
+    clip_score_vec <- 0.5 * meta_df$score_bodily_autonomy + 0.5 * meta_df$score_carceral_containment
+  } else {
+    clip_score_vec <- meta_df[[clip_col]]
+  }
 
   z_stm  <- as.numeric(scale(stm_theta_vec))
   z_clip <- as.numeric(scale(clip_score_vec))
@@ -151,3 +157,5 @@ stopifnot(
 )
 cat(sprintf("[TDD PASS] Script 09 Complete! Qualitative dossier written to %s (%d bytes).\n",
             dossier_path, file.info(dossier_path)$size))
+writeLines(capture.output(sessionInfo()), "results/session_info.txt")
+cat("[INFO] Exported R sessionInfo() to results/session_info.txt.\n")

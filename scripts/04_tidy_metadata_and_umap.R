@@ -1,7 +1,7 @@
 %%R
 # ==============================================================================
-# SCRIPT: scripts/04_tidy_metadata_and_umap.R
-# CHAPTER: Chapter 5 — Cultural Resistance: Counter-Visuality in the PCAP Archive
+# scripts/04_tidy_metadata_and_umap.R
+# Cultural Resistance: Counter-Visuality in the PCAP Archive
 # PURPOSE: Phase 2 R/Tidyverse Entrypoint. Ingests data/pcap_clip_embeddings.parquet
 #          natively via arrow::read_parquet(). Cleans exhibition years, parses
 #          Michigan DOC security levels, classifies raw medium strings into the
@@ -151,7 +151,7 @@ parse_security_level <- function(facility_raw) {
 
 # TDD Gate: Verify medium & year classifiers on edge cases before corpus application
 stopifnot(
-  classify_carceral_medium("Carved Ivory soap and toilet paper with ballpoint pen") ==
+   classify_carceral_medium("Carved Ivory soap and toilet paper with ballpoint pen") ==
     "Contraband/Found Carceral Material",
   classify_carceral_medium("deconstructed and reconstructed jackets: fabric, acrylic paint and ink") ==
     "Contraband/Found Carceral Material",
@@ -172,8 +172,27 @@ metadata_df <- raw_clip_df %>%
     item_id = as.character(item_id),
     clean_year = parse_exhibition_year(raw_date, exhibition_source, identifier),
     year_imputed = is.na(clean_year),
-    clean_year = coalesce(clean_year, median(clean_year, na.rm = TRUE) %>% as.integer(), 2012L),
-    era_window = ifelse(clean_year >= 2010L, "Carceral-Digital Turn (2010-2024)", "Pre-Digital Era (1996-2009)"),
+    # Separate imputed year strictly for STM prevalence spline priors (Steps 05-06)
+    clean_year_stm = coalesce(
+      clean_year,
+      median(clean_year, na.rm = TRUE) %>% as.integer(),
+      2012L
+    ),
+    # Half-decade temporal buckets (Arnold & Tilton, 2023, Table 3.1, p. 71)
+    half_decade = case_when(
+      is.na(clean_year)   ~ "Undated Record",
+      clean_year <= 1999L ~ "1996-1999",
+      clean_year <= 2004L ~ "2000-2004",
+      clean_year <= 2009L ~ "2005-2009",
+      clean_year <= 2014L ~ "2010-2014",
+      clean_year <= 2019L ~ "2015-2019",
+      TRUE                ~ "2020-2024"
+    ),
+    era_window = case_when(
+      is.na(clean_year)   ~ "Undated Record",
+      clean_year >= 2010L ~ "Carceral-Digital Turn (2010-2024)",
+      TRUE                ~ "Pre-Digital Era (1996-2009)"
+    ),
     medium_category = factor(
       classify_carceral_medium(medium_raw),
       levels = c(
@@ -184,7 +203,6 @@ metadata_df <- raw_clip_df %>%
       )
     ),
     security_level = parse_security_level(facility_raw),
-    # Section 5.1 Theoretical Metric: Net Tactile Disalienation vs. Institutional Enclosure
     disalienation_index = as.numeric(
       scale(score_tactile_disalienation + 0.5 * score_bodily_autonomy) -
       scale(score_carceral_containment + 0.5 * score_state_bureaucracy)
@@ -358,6 +376,51 @@ ggsave(
   plot = fig02,
   width = 10,
   height = 7,
+  dpi = 300,
+  bg = "white"
+)
+
+# Figure 02b: Small-Multiple Faceted UMAP by Material Medium
+# Replicates Arnold & Tilton (2023, Chapter 6, Figure 6.6, p. 210)
+umap_bg_df <- tidy_corpus %>% select(umap_1, umap_2)
+
+fig02b <- ggplot(tidy_corpus, aes(x = umap_1, y = umap_2)) +
+  geom_point(
+    data = umap_bg_df,
+    aes(x = umap_1, y = umap_2),
+    color = "grey85",
+    size = 0.5,
+    alpha = 0.45
+  ) +
+  geom_point(aes(color = medium_category), size = 0.9, alpha = 0.80) +
+  facet_wrap(~ medium_category, ncol = 2) +
+  scale_color_manual(
+    values = c(
+      "Contraband/Found Carceral Material" = "#B22222",
+      "Mixed/Sculptural"                   = "#D95F02",
+      "Graphite/Ink on Paper"              = "#7570B3",
+      "Standard Paint/Canvas"              = "#1B9E77"
+    ),
+    guide = "none"
+  ) +
+  labs(
+    title = "Material Substrates Across the CLIP Visual Embedding Manifold",
+    subtitle = "Each panel highlights one material medium category against the full PCAP corpus in light gray (Arnold & Tilton, 2023, p. 210)",
+    x = "UMAP Dimension 1 (Cosine Metric)",
+    y = "UMAP Dimension 2 (Cosine Metric)"
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    plot.title = element_text(face = "bold", size = 14),
+    strip.text = element_text(face = "bold", size = 11),
+    panel.grid.minor = element_blank()
+  )
+
+ggsave(
+  filename = "results/figures/fig02b_umap_faceted_by_medium.png",
+  plot = fig02b,
+  width = 10,
+  height = 8,
   dpi = 300,
   bg = "white"
 )

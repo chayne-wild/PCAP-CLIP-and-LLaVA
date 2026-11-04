@@ -1,7 +1,7 @@
 %%R
 # ==============================================================================
-# SCRIPT: scripts/06_stm_visual_motifs_k25.R
-# CHAPTER: Chapter 5 — Cultural Resistance: Counter-Visuality in the PCAP Archive
+# scripts/06_stm_visual_motifs_k25.R
+# Cultural Resistance: Counter-Visuality in the PCAP Archive
 # PURPOSE: Trains the deterministic K = 25 Structural Topic Model
 #          (init.type = "Spectral") on the cleaned LLaVA iconographic
 #          descriptions with prevalence = ~ s(clean_year) + medium_category.
@@ -38,11 +38,11 @@ K_TARGET <- 25L
 cat(sprintf("[INFO] Fitting Spectral STM with K = %d on %d artworks...\n",
             K_TARGET, length(out_visual$documents)))
 
-n_unique_yrs <- length(unique(out_visual$meta$clean_year))
+n_unique_yrs <- length(unique(out_visual$meta$clean_year_stm))
 prevalence_formula <- if (n_unique_yrs >= 10) {
-  ~ s(clean_year) + medium_category
+  ~ s(clean_year_stm) + medium_category
 } else {
-  ~ clean_year + medium_category
+  ~ clean_year_stm + medium_category
 }
 
 set.seed(42)
@@ -67,27 +67,39 @@ collapse_words <- function(mat, row_idx) {
   paste(mat[row_idx, ], collapse = ", ")
 }
 
-# Theoretical Anchor Lexicons to map top counter-visual motif categories
+# Theoretical Anchor Lexicons aligned with LLaVA Concrete "Objects + Stuff"
+# (Arnold & Tilton, 2023, Chapter 4, Tables 4.3-4.5, pp. 128-137)
 motif_anchors <- list(
   "Panoptic Eyes & Watchtowers" = c(
     "eye", "watchtower", "tower", "camera", "gaze", "stare", "spotlight",
-    "surveillance", "lens", "watch", "guard", "pupil", "iris"
+    "surveillance", "lens", "watch", "guard", "officer", "pupil", "iris",
+    "clock", "record", "recording", "observe", "observation", "searchlight",
+    "binocular", "uniform", "flashlight", "security", "look"
   ),
   "Forensic Numbers & Barcodes" = c(
-    "number", "barcode", "digit", "stamp", "code", "label", "identification",
-    "serial", "form", "text", "letter", "grid", "placard", "tally"
+    "number", "numeral", "barcode", "digit", "stamp", "code", "label",
+    "identification", "serial", "form", "text", "letter", "grid", "placard",
+    "tally", "sign", "word", "written", "writing", "document", "badge",
+    "calendar", "mark", "inscription", "tag"
   ),
   "Fragmented/Shackled Bodies & Counter-Gaze" = c(
     "chain", "shackle", "handcuff", "bar", "wire", "razor", "cage", "cell",
-    "face", "hand", "body", "expression", "defiant", "direct", "tear", "scream"
+    "face", "hand", "body", "expression", "defiant", "direct", "tear", "scream",
+    "brick", "wall", "rope", "pole", "suspend", "hang", "hanging", "neck",
+    "waist", "wrist", "bound", "tie", "fence", "lock", "door", "blood", "fist"
   ),
   "Pastoral Escape & Tactile Disalienation" = c(
     "tree", "sky", "horizon", "mountain", "water", "bird", "flower", "nature",
-    "forest", "sun", "landscape", "cloud", "river", "texture", "impasto", "carve"
+    "forest", "sun", "sunset", "landscape", "cloud", "river", "texture",
+    "impasto", "carve", "waterfall", "stream", "pine", "grass", "field",
+    "ocean", "lake", "leaf", "branch", "butterfly", "horse", "wolf", "animal",
+    "yarn", "fabric", "collage", "woven", "soap", "wood", "thread"
   ),
   "Telephonic/Screen Separation & Digital Mediation" = c(
-    "phone", "telephone", "screen", "monitor", "glass", "window", "booth",
-    "cord", "cable", "digital", "pixel", "electronic", "computer", "visitation"
+    "phone", "telephone", "handset", "screen", "monitor", "television",
+    "glass", "plexiglass", "window", "booth", "cord", "cable", "digital",
+    "pixel", "electronic", "computer", "visitation", "microphone", "speaker",
+    "keyboard", "button", "device", "machine", "divider", "partition"
   )
 )
 

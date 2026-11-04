@@ -1,12 +1,9 @@
 # ==============================================================================
-# SCRIPT: scripts/03_llava_stratified_interrogation.py
-# CHAPTER: Chapter 5 — Cultural Resistance: Counter-Visuality in the PCAP Archive
-# PURPOSE: Selects the stratified high-signal subsample (top decile tau >= 0.90
-#          across Surveillance, Bureaucracy/Biometric, Digital, and Bodily
-#          Autonomy CLIP axes + random baseline control group; N = 1,200).
-#          Streams images into volatile RAM and executes 4-bit quantized LLaVA
-#          (llava-hf/llava-1.5-7b-hf) deterministic iconographic interrogation.
-# ETHICS : ZERO PERSISTENT IMAGE STORAGE. Concludes Python's role in the project.
+# scripts/03_llava_stratified_interrogation.py
+# Cultural Resistance: Counter-Visuality in the PCAP Archive
+# PURPOSE: Selects a balanced 6-axis stratified high-signal subsample
+#          and runs deterministic (`do_sample = False`) iconographic interrogation
+#          using 4-bit NormalFloat (`NF4`) quantized llava-hf/llava-1.5-7b-hf
 # OUTPUT : data/pcap_llava_interrogations.jsonl
 # ==============================================================================
 
@@ -14,21 +11,25 @@ import io
 import gc
 import json
 import time
+import shutil
 import random
+import warnings
 from pathlib import Path
-from typing import Dict, List, Set
+from typing import Dict, List, Set, Tuple
 import numpy as np
 import pandas as pd
 import requests
 from PIL import Image, ImageFile
 import torch
+import open_clip
 from transformers import AutoProcessor, BitsAndBytesConfig, LlavaForConditionalGeneration
 from tqdm.auto import tqdm
 
 ImageFile.LOAD_TRUNCATED_IMAGES = True
+warnings.filterwarnings("ignore", category=UserWarning, module="huggingface_hub")
 
 # ------------------------------------------------------------------------------
-# 1. CONFIGURATION & DETERMINISTIC ICONOGRAPHIC PROMPT
+# 1. CONFIGURATION, CONTRASTIVE SURVEILLANCE & OBJECTS+STUFF LLAVA PROMPT
 # ------------------------------------------------------------------------------
 PROJECT_ROOT = Path("/content/drive/MyDrive/colab_pcap_folder")
 if not PROJECT_ROOT.exists():
@@ -36,43 +37,116 @@ if not PROJECT_ROOT.exists():
 
 DATA_DIR = PROJECT_ROOT / "data"
 CLIP_PARQUET_PATH = DATA_DIR / "pcap_clip_embeddings.parquet"
+BACKUP_PARQUET_PATH = DATA_DIR / "pcap_clip_embeddings_v1_backup.parquet"
 LLAVA_JSONL_PATH = DATA_DIR / "pcap_llava_interrogations.jsonl"
 
 LLAVA_MODEL_ID = "llava-hf/llava-1.5-7b-hf"
+
+# Set PILOT_MODE = True to test 6 top-ranked artworks; set False for full N=1,200 run
+PILOT_MODE = False
+
 TARGET_SAMPLE_SIZE = 1200
-HIGH_SIGNAL_COUNT = 900
-CONTROL_GROUP_COUNT = 300
+HIGH_SIGNAL_COUNT = 900    # Top 150 highest-scoring exemplars across all 6 axes
+CONTROL_GROUP_COUNT = 300  # 300 random baseline control artworks (< 90th percentile)
 QUANTILE_TAU = 0.90
 RANDOM_SEED = 42
 
-USER_AGENT = "PCAP_Virginia_Tech_Dissertation_Bot/1.0 (chayne@vt.edu)"
+USER_AGENT = "PCAP_Virginia_Tech_Research_Bot/1.0 (chayne@vt.edu)"
 HEADERS = {"User-Agent": USER_AGENT}
 
 HIGH_SIGNAL_AXES = [
     "score_surveillance_biometric",
-    "score_state_bureaucracy",
-    "score_digital_mediation",
+    "score_carceral_containment",
     "score_bodily_autonomy",
+    "score_tactile_disalienation",
+    "score_digital_mediation",
+    "score_state_bureaucracy",
 ]
 
-# Structured 4-Part Iconographic Prompt for LLaVA-1.5
+# Contrastive Panoptic Surveillance Definition (Candidate B)
+SURVEILLANCE_TARGET_PROMPTS = [
+    "an artwork depicting a prison watchtower, security camera, searchlight beam, or panoptic surveillance",
+    "being watched by correctional guards, disembodied watching eyes on a fence or sky, or cell observation window",
+    "cctv camera lens, optical surveillance grid, retinal scan, or panopticon tower overlooking a prison",
+]
+SURVEILLANCE_CONFOUNDER_PROMPTS = [
+    "a close-up pencil or charcoal drawing of a single sad human eye crying a tear",
+    "close-up facial portrait focusing on eyelashes, eyebrows, and a reflective pupil",
+]
+ALPHA_CONFOUNDER_SUBTRACT = 0.25
+
+# Prompt: Prison archive context, asks for held objects & wall markings,
+# and separates foreground "objects" from background "stuff" (Arnold & Tilton, 2023, pp. 103-105)
 LLAVA_PROMPT_TEMPLATE = (
     "USER: <image>\n"
     "You are an art historian analyzing an artwork created by an incarcerated artist. "
-    "Provide a detailed, objective iconographic description structured into four parts:\n"
-    "(a) Formal composition, surface markings, and material texture;\n"
-    "(b) Any depictions of eyes, security cameras, watchtowers, prison bars, razor wire, "
-    "identification numbers, barcodes, or optical grids;\n"
-    "(c) Bodily framing, posture, facial expression, and whether the subject returns a "
-    "direct counter-gaze toward the viewer;\n"
-    "(d) Visual practices of spatial or sensory disalienation, such as open horizons, "
-    "natural landscapes, wildlife, or tactile craft.\n"
+    "Describe only what is visibly present in the work in three detailed paragraphs:\n"
+    "1. Medium, colors, and formal texture: Describe the artistic medium, color palette, "
+    "lighting, brushwork, line quality, and physical surface texture.\n"
+    "2. Foreground figures and held objects: Describe any people or figures, their posture, "
+    "facial expressions, the direction of their gaze, and anything worn on their bodies or "
+    "held in their hands (such as chains, ropes, tools, cameras, phones, or weapons).\n"
+    "3. Background stuff, architecture, and environment: Describe the surrounding setting, "
+    "including any walls, fences, cell doors, windows, clocks, written text, numbers, symbols, "
+    "or natural landscapes, water, trees, and open sky.\n"
     "ASSISTANT:"
 )
 
 
 # ------------------------------------------------------------------------------
-# 2. STRATIFIED HIGH-SIGNAL + BASELINE CONTROL SUBSAMPLING
+# 2. SAFE IN-PLACE UPGRADE OF `score_surveillance_biometric` (CANDIDATE B)
+# ------------------------------------------------------------------------------
+def ensure_contrastive_surveillance_score() -> None:
+    if BACKUP_PARQUET_PATH.exists():
+        print(
+            f"[INFO] Backup exists at {BACKUP_PARQUET_PATH.name}; "
+            "Candidate B contrastive surveillance score is active."
+        )
+        return
+
+    print("[INFO] Creating safe backup: data/pcap_clip_embeddings_v1_backup.parquet ...")
+    shutil.copy2(CLIP_PARQUET_PATH, BACKUP_PARQUET_PATH)
+    assert BACKUP_PARQUET_PATH.exists(), "[ERROR] Backup creation failed!"
+
+    full_df = pd.read_parquet(CLIP_PARQUET_PATH)
+    orig_rows, orig_cols = full_df.shape
+    emb_cols = [f"clip_{i:03d}" for i in range(1, 769)]
+    img_matrix = full_df[emb_cols].to_numpy(dtype=np.float32)
+
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    clip_model, _, _ = open_clip.create_model_and_transforms(
+        "ViT-L-14", pretrained="openai", device=device
+    )
+    clip_model.eval()
+    tokenizer = open_clip.get_tokenizer("ViT-L-14")
+
+    def _encode_ensemble(prompts: List[str]) -> np.ndarray:
+        with torch.no_grad():
+            tokens = tokenizer(prompts).to(device)
+            feats = clip_model.encode_text(tokens).float()
+            feats = feats / feats.norm(dim=-1, keepdim=True)
+            mean_feat = feats.mean(dim=0, keepdim=True)
+            mean_feat = mean_feat / mean_feat.norm(dim=-1, keepdim=True)
+            return mean_feat.squeeze(0).cpu().numpy().astype(np.float32)
+
+    vec_target = _encode_ensemble(SURVEILLANCE_TARGET_PROMPTS)
+    vec_confounder = _encode_ensemble(SURVEILLANCE_CONFOUNDER_PROMPTS)
+    vec_cand_b = vec_target - (ALPHA_CONFOUNDER_SUBTRACT * vec_confounder)
+    vec_cand_b = (vec_cand_b / np.linalg.norm(vec_cand_b)).astype(np.float32)
+
+    full_df["score_surveillance_biometric"] = (img_matrix @ vec_cand_b).astype(np.float32)
+    assert full_df.shape == (orig_rows, orig_cols), "[ERROR] DataFrame shape mismatch!"
+    full_df.to_parquet(CLIP_PARQUET_PATH, index=False, engine="pyarrow")
+    print(f"[TDD PASS] Updated `score_surveillance_biometric` to Candidate B ({orig_rows} rows).")
+
+    del clip_model, tokenizer, full_df, img_matrix
+    gc.collect()
+    if torch.cuda.is_available():
+        torch.cuda.empty_cache()
+
+
+# ------------------------------------------------------------------------------
+# 3. TOP-150 RANKED QUOTA SUBSAMPLING (`nlargest` PER AXIS + CONTROL)
 # ------------------------------------------------------------------------------
 def select_stratified_subsample(
     df: pd.DataFrame,
@@ -83,15 +157,18 @@ def select_stratified_subsample(
     seed: int = RANDOM_SEED,
 ) -> pd.DataFrame:
     """
-    Identify artworks scoring in the top decile (tau >= 0.90) across the four
-    target counter-visuality CLIP axes, plus a random baseline control group.
-    Scales proportionally if the input corpus has fewer than 1,200 artworks.
+    Selects the Top 150 highest Z-score artworks (`nlargest`) for each of the 6
+    theoretical axes (900 high-signal total) + 300 random baseline controls.
     """
-    # Calculate 90th percentile cutoff on each target axis
     thresholds = {ax: float(df[ax].quantile(tau)) for ax in HIGH_SIGNAL_AXES}
-    print("[INFO] High-Signal Decile Thresholds (tau = 0.90):")
+    print(f"[INFO] High-Signal Decile Thresholds (tau = {tau:.2f}):")
     for ax, val in thresholds.items():
         print(f"  -> {ax:<30}: {val:.4f}")
+
+    z_scores = pd.DataFrame(index=df.index)
+    for ax in HIGH_SIGNAL_AXES:
+        std_val = float(df[ax].std()) or 1.0
+        z_scores[ax] = (df[ax] - float(df[ax].mean())) / std_val
 
     high_mask = pd.Series(False, index=df.index)
     for ax in HIGH_SIGNAL_AXES:
@@ -100,105 +177,115 @@ def select_stratified_subsample(
     high_pool = df[high_mask].copy()
     control_pool = df[~high_mask].copy()
 
-    # Assign each high-signal artwork to its dominant standardized theoretical axis
-    z_scores = pd.DataFrame(index=high_pool.index)
-    for ax in HIGH_SIGNAL_AXES:
-        std_val = float(df[ax].std()) or 1.0
-        z_scores[ax] = (high_pool[ax] - float(df[ax].mean())) / std_val
     high_pool["sampling_stratum"] = (
-        "high_signal_" + z_scores.idxmax(axis=1).str.replace("score_", "", regex=False)
+        "high_signal_"
+        + z_scores.loc[high_pool.index].idxmax(axis=1).str.replace("score_", "", regex=False)
     )
+    high_pool["peak_z"] = z_scores.loc[high_pool.index].max(axis=1)
     control_pool["sampling_stratum"] = "baseline_control"
+    control_pool["peak_z"] = 0.0
 
     if len(df) <= target_n:
-        print(
-            f"[INFO] Corpus size ({len(df)}) <= target ({target_n}); "
-            "retaining full corpus with stratum labels."
-        )
-        return pd.concat([high_pool, control_pool], ignore_index=True)
+        return pd.concat([high_pool, control_pool], ignore_index=True).drop(columns=["peak_z"])
 
-    actual_high_n = min(high_n, len(high_pool))
-    actual_ctrl_n = min(control_n, len(control_pool), target_n - actual_high_n)
-
-    # Pandas 2.2+ safe loop across strata (preserves sampling_stratum column)
+    # Select the TOP 150 highest-scoring exemplars (`nlargest`) per stratum
+    per_axis_quota = high_n // len(HIGH_SIGNAL_AXES)
     sampled_parts = []
-    for _, grp in high_pool.groupby("sampling_stratum"):
-        n_stratum = max(1, int(round(actual_high_n * len(grp) / len(high_pool))))
-        n_stratum = min(n_stratum, len(grp))
-        sampled_parts.append(grp.sample(n=n_stratum, random_state=seed))
+    used_ids = set()
+
+    for ax in HIGH_SIGNAL_AXES:
+        stratum_name = "high_signal_" + ax.replace("score_", "")
+        grp = high_pool[high_pool["sampling_stratum"] == stratum_name]
+        n_take = min(per_axis_quota, len(grp))
+        if n_take > 0:
+            picked = grp.nlargest(n_take, "peak_z")
+            sampled_parts.append(picked)
+            used_ids.update(picked["item_id"].tolist())
 
     sampled_high = pd.concat(sampled_parts, ignore_index=True)
-    if len(sampled_high) > actual_high_n:
-        sampled_high = sampled_high.sample(n=actual_high_n, random_state=seed)
-    elif len(sampled_high) < actual_high_n:
-        rem_pool = high_pool[~high_pool["item_id"].isin(set(sampled_high["item_id"]))]
-        extra_rows = rem_pool.sample(
-            n=actual_high_n - len(sampled_high), random_state=seed
-        )
+
+    if len(sampled_high) < high_n:
+        shortfall = min(high_n - len(sampled_high), len(high_pool) - len(sampled_high))
+        rem_pool = high_pool[~high_pool["item_id"].isin(used_ids)]
+        extra_rows = rem_pool.nlargest(shortfall, "peak_z")
         sampled_high = pd.concat([sampled_high, extra_rows], ignore_index=True)
 
+    actual_ctrl_n = min(control_n, len(control_pool), target_n - len(sampled_high))
     sampled_ctrl = control_pool.sample(n=actual_ctrl_n, random_state=seed)
-    combined = pd.concat([sampled_high, sampled_ctrl], ignore_index=True)
 
-    assert "sampling_stratum" in combined.columns, "[ERROR] sampling_stratum column missing!"
-    print(
-        f"[TDD PASS] Stratified Subsample Selected: Total N={len(combined)} "
-        f"(High-Signal={len(sampled_high)}, Baseline Control={len(sampled_ctrl)})"
+    combined = (
+        pd.concat([sampled_high, sampled_ctrl], ignore_index=True)
+        .drop(columns=["peak_z"])
+        .sample(frac=1.0, random_state=seed)
+        .reset_index(drop=True)
     )
+
+    print("\n[INFO] Final Stratified Sample Breakdown (Top-Ranked Exemplars + Control):")
+    for st, cnt in combined["sampling_stratum"].value_counts().items():
+        print(f"  -> {st:<40}: {cnt:4d} artworks")
     return combined
 
 
 # ------------------------------------------------------------------------------
-# 3. LOAD 4-BIT QUANTIZED LLAVA MODEL ON GPU
+# 4. LOW-LEVEL HCI FORMAL METRICS & EPHEMERAL RAM LLAVA INTERROGATION
 # ------------------------------------------------------------------------------
-def load_quantized_llava(model_id: str):
-    """Load LLaVA-1.5-7B with 4-bit NF4 quantization for Colab GPU efficiency."""
-    if not torch.cuda.is_available():
-        raise RuntimeError(
-            "[ERROR] Script 03 requires a CUDA GPU runtime for 4-bit LLaVA inference!"
-        )
+def compute_hci_formal_metrics(pil_image: Image.Image) -> Tuple[float, float, float]:
+    """
+    Computes 3 low-level formal color annotations in RAM following Arnold & Tilton
+    (2023, Chapter 3, pp. 64-65, 93): mean intensity (brightness), mean chroma
+    (saturation proxy), and warm-color pixel ratio.
+    """
+    arr = np.asarray(pil_image.resize((128, 128)), dtype=np.float32) / 255.0
+    intensity = float(arr.mean())
+    chroma = float((arr.max(axis=-1) - arr.min(axis=-1)).mean())
+    # Warm pixels: Red channel exceeds Blue channel on non-grayscale pixels
+    colorful_mask = (arr.max(axis=-1) - arr.min(axis=-1)) > 0.10
+    if colorful_mask.sum() > 0:
+        warm_ratio = float((arr[..., 0][colorful_mask] >= arr[..., 2][colorful_mask]).mean())
+    else:
+        warm_ratio = 0.5
+    return round(intensity, 4), round(chroma, 4), round(warm_ratio, 4)
 
-    print(f"[INFO] Loading 4-bit NF4 quantized {model_id} onto CUDA...")
+
+def load_quantized_llava(model_id: str):
+    if not torch.cuda.is_available():
+        raise RuntimeError("[ERROR] Script 03 requires a CUDA GPU runtime!")
+
     bnb_config = BitsAndBytesConfig(
         load_in_4bit=True,
         bnb_4bit_quant_type="nf4",
         bnb_4bit_use_double_quant=True,
         bnb_4bit_compute_dtype=torch.float16,
     )
-
     processor = AutoProcessor.from_pretrained(model_id)
     model = LlavaForConditionalGeneration.from_pretrained(
         model_id,
         quantization_config=bnb_config,
         device_map="auto",
         low_cpu_mem_usage=True,
+        attn_implementation="sdpa",
     )
     model.eval()
-    print("[TDD PASS] 4-bit Quantized LLaVA model and processor initialized.")
     return model, processor
 
 
-# ------------------------------------------------------------------------------
-# 4. EPHEMERAL RAM STREAMING & LLAVA INTERROGATION
-# ------------------------------------------------------------------------------
 def interrogate_single_artwork_ram(
     image_url: str,
     session: requests.Session,
     model,
     processor,
-) -> str:
-    """
-    Stream artwork bytes into io.BytesIO, run deterministic LLaVA generation,
-    and immediately purge all image binaries from volatile RAM.
-    """
+) -> Tuple[str, float, float, float]:
     buffer = None
     pil_image = None
+    inputs = None
+    output_ids = None
     try:
         resp = session.get(image_url, headers=HEADERS, timeout=35)
         resp.raise_for_status()
 
         buffer = io.BytesIO(resp.content)
         pil_image = Image.open(buffer).convert("RGB")
+        brightness, saturation, warm_ratio = compute_hci_formal_metrics(pil_image)
 
         inputs = processor(
             text=LLAVA_PROMPT_TEMPLATE,
@@ -206,22 +293,27 @@ def interrogate_single_artwork_ram(
             return_tensors="pt",
         ).to(model.device, torch.float16)
 
-        with torch.no_grad():
+        with torch.inference_mode():
             output_ids = model.generate(
                 **inputs,
-                max_new_tokens=350,
+                max_new_tokens=325,
                 do_sample=False,
+                repetition_penalty=1.12,
             )
 
         decoded = processor.decode(output_ids[0], skip_special_tokens=True)
-        if "ASSISTANT:" in decoded:
-            transcript = decoded.split("ASSISTANT:", 1)[-1].strip()
-        else:
-            transcript = decoded.strip()
-
-        return transcript
+        transcript = (
+            decoded.split("ASSISTANT:", 1)[-1].strip()
+            if "ASSISTANT:" in decoded
+            else decoded.strip()
+        )
+        return transcript, brightness, saturation, warm_ratio
 
     finally:
+        if inputs is not None:
+            del inputs
+        if output_ids is not None:
+            del output_ids
         if pil_image is not None:
             pil_image.close()
             del pil_image
@@ -231,72 +323,66 @@ def interrogate_single_artwork_ram(
 
 
 # ------------------------------------------------------------------------------
-# 5. MAIN EXECUTION LOOP WITH FAULT-TOLERANT JSONL CHECKPOINTING
+# 5. MAIN EXECUTION LOOP
 # ------------------------------------------------------------------------------
 def main() -> None:
-    if not CLIP_PARQUET_PATH.exists():
-        raise FileNotFoundError(
-            f"[ERROR] Missing {CLIP_PARQUET_PATH}. Run Script 02 first!"
-        )
+    ensure_contrastive_surveillance_score()
 
-    meta_cols = (
-        [
-            "item_id",
-            "title",
-            "raw_date",
-            "exhibition_source",
-            "medium_raw",
-            "image_url",
-            "omeka_web_url",
-        ]
-        + HIGH_SIGNAL_AXES
-        + [
-            "score_tactile_disalienation",
-            "score_carceral_containment",
-        ]
-    )
+    meta_cols = [
+        "item_id", "title", "raw_date", "exhibition_source",
+        "medium_raw", "image_url", "omeka_web_url",
+    ] + HIGH_SIGNAL_AXES
 
     df = pd.read_parquet(CLIP_PARQUET_PATH, columns=meta_cols)
     sample_df = select_stratified_subsample(df)
 
-    # Check existing JSONL output to resume cleanly if interrupted
+    model, processor = load_quantized_llava(LLAVA_MODEL_ID)
+    session = requests.Session()
+
+    if PILOT_MODE:
+        print("\n" + "=" * 78)
+        print("[PILOT MODE ACTIVE] Testing 6 top-ranked artworks (1 per axis)...")
+        print("=" * 78)
+        pilot_rows = (
+            sample_df[sample_df["sampling_stratum"] != "baseline_control"]
+            .groupby("sampling_stratum")
+            .first()
+            .reset_index()
+        )
+        for _, row in pilot_rows.iterrows():
+            transcript, b_val, s_val, w_val = interrogate_single_artwork_ram(
+                image_url=str(row["image_url"]).strip(),
+                session=session,
+                model=model,
+                processor=processor,
+            )
+            print(f"\n>>> STRATUM : {row['sampling_stratum']}")
+            print(f">>> TITLE   : {row['title']} (ID: {row['item_id']}) | Medium: {row['medium_raw']}")
+            print(f">>> FORMAL  : Brightness={b_val:.3f}, Chroma={s_val:.3f}, WarmRatio={w_val:.3f}")
+            print(f">>> URL     : {row['omeka_web_url']}")
+            print(f">>> LLAVA   :\n{transcript}\n" + "-" * 78)
+        print("[PILOT PASS] Flip PILOT_MODE = False (Line 41) for the full N=1,200 run.")
+        return
+
     completed_ids: Set[str] = set()
     if LLAVA_JSONL_PATH.exists():
         with open(LLAVA_JSONL_PATH, "r", encoding="utf-8") as f:
             for line in f:
-                line = line.strip()
-                if not line:
-                    continue
-                try:
-                    rec = json.loads(line)
-                    if "item_id" in rec and rec.get("llava_description"):
-                        completed_ids.add(str(rec["item_id"]))
-                except json.JSONDecodeError:
-                    continue
-        print(
-            f"[INFO] Found {len(completed_ids)} completed LLaVA transcripts in "
-            f"{LLAVA_JSONL_PATH}."
-        )
+                if line.strip():
+                    try:
+                        rec = json.loads(line)
+                        if rec.get("item_id") and rec.get("llava_description"):
+                            completed_ids.add(str(rec["item_id"]))
+                    except json.JSONDecodeError:
+                        continue
 
-    pending_df = sample_df[
-        ~sample_df["item_id"].astype(str).isin(completed_ids)
-    ].copy()
-
+    pending_df = sample_df[~sample_df["item_id"].astype(str).isin(completed_ids)].copy()
     if len(pending_df) == 0:
-        print("[TDD PASS] All stratified sample artworks have been interrogated!")
+        print("[TDD PASS] All 1,200 stratified artworks have been interrogated!")
         return
 
-    model, processor = load_quantized_llava(LLAVA_MODEL_ID)
-    session = requests.Session()
-
-    print(
-        f"[INFO] Executing LLaVA iconographic interrogation on {len(pending_df)} artworks..."
-    )
     with open(LLAVA_JSONL_PATH, "a", encoding="utf-8") as jsonl_file:
-        pbar = tqdm(
-            pending_df.to_dict(orient="records"),
-            desc="LLaVA Visual Interrogation",
-        )
+        pbar = tqdm(pending_df.to_dict(orient="records"), desc="LLaVA Visual Interrogation")
         for idx, row in enumerate(pbar, start=1):
             item_id = str(row["item_id"])
             img_url = str(row["image_url"]).strip()
@@ -304,13 +390,12 @@ def main() -> None:
                 continue
 
             try:
-                transcript = interrogate_single_artwork_ram(
+                transcript, b_val, s_val, w_val = interrogate_single_artwork_ram(
                     image_url=img_url,
                     session=session,
                     model=model,
                     processor=processor,
                 )
-
                 record = {
                     "item_id": item_id,
                     "title": str(row.get("title", "")),
@@ -321,14 +406,15 @@ def main() -> None:
                     "score_bodily_autonomy": float(row["score_bodily_autonomy"]),
                     "score_tactile_disalienation": float(row["score_tactile_disalienation"]),
                     "score_carceral_containment": float(row["score_carceral_containment"]),
+                    "formal_brightness": b_val,
+                    "formal_saturation": s_val,
+                    "formal_warm_ratio": w_val,
                     "llava_model": LLAVA_MODEL_ID,
                     "llava_description": transcript,
                     "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
                 }
-
                 jsonl_file.write(json.dumps(record, ensure_ascii=False) + "\n")
                 jsonl_file.flush()
-
             except Exception as err:
                 print(f"\n[WARN] LLaVA failed on item_id={item_id}: {err}")
                 continue
@@ -336,13 +422,9 @@ def main() -> None:
             if idx % 25 == 0:
                 gc.collect()
                 torch.cuda.empty_cache()
+            time.sleep(random.uniform(0.3, 0.7))
 
-            time.sleep(random.uniform(0.5, 1.2))
-
-    print("=" * 78)
-    print(f"[TDD PASS] Script 03 Complete! (Python GPU Phase Concluded)")
-    print(f"  -> Output JSONL : {LLAVA_JSONL_PATH}")
-    print("=" * 78)
+    print(f"[TDD PASS] Script 03 Complete! Saved to {LLAVA_JSONL_PATH}")
 
 
 if __name__ == "__main__":

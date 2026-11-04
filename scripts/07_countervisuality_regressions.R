@@ -1,7 +1,7 @@
 %%R
 # ==============================================================================
-# SCRIPT: scripts/07_countervisuality_regressions.R
-# CHAPTER: Chapter 5 — Cultural Resistance: Counter-Visuality in the PCAP Archive
+# scripts/07_countervisuality_regressions.R
+# Cultural Resistance: Counter-Visuality in the PCAP Archive
 # PURPOSE: Estimates B-spline temporal trajectories (stm::estimateEffect) and
 #          OLS linear models (lm + broom + modelsummary + gt) across both the
 #          full archive timeline (1996-2024) and the Carceral-Digital Turn
@@ -40,11 +40,11 @@ table03_topics <- attr(stm_k25, "topic_summary_table")
 # 1. ESTIMATE B-SPLINE TEMPORAL EFFECTS (stm::estimateEffect)
 # ------------------------------------------------------------------------------
 cat("[INFO] Running stm::estimateEffect across all 25 visual motifs...\n")
-n_unique_yrs <- length(unique(out_visual$meta$clean_year))
+n_unique_yrs <- length(unique(out_visual$meta$clean_year_stm))
 effect_formula <- if (n_unique_yrs >= 10) {
-  1:25 ~ s(clean_year) + medium_category
+  1:25 ~ s(clean_year_stm) + medium_category
 } else {
-  1:25 ~ clean_year + medium_category
+  1:25 ~ clean_year_stm + medium_category
 }
 
 set.seed(42)
@@ -56,7 +56,7 @@ prep_effects <- stm::estimateEffect(
 )
 
 # ------------------------------------------------------------------------------
-# 2. CONSTRUCT DOCUMENT-LEVEL COUNTER-VISUALITY INDICES FOR REGRESSION & PLOTTING
+# 2. CONSTRUCT DOCUMENT-LEVEL COUNTER-VISUALITY INDICES (VERIFIED YEARS ONLY)
 # ------------------------------------------------------------------------------
 theta_mat <- as.data.frame(stm_k25$theta)
 colnames(theta_mat) <- sprintf("topic_%02d", 1:25)
@@ -74,9 +74,11 @@ idx_forensic   <- get_family_topics("Forensic Numbers & Barcodes", c(3, 4))
 idx_shackled   <- get_family_topics("Fragmented/Shackled Bodies & Counter-Gaze", c(5, 6))
 idx_telephonic <- get_family_topics("Telephonic/Screen Separation & Digital Mediation", c(7, 8))
 
+# Filter strictly to verified (non-imputed) exhibition years (!year_imputed)
 reg_df <- out_visual$meta %>%
   as_tibble() %>%
   bind_cols(theta_mat) %>%
+  filter(!year_imputed, !is.na(clean_year), clean_year >= 1996, clean_year <= 2025) %>%
   mutate(
     clean_year = as.numeric(clean_year),
     year_centered_1996 = clean_year - 1996,
@@ -84,18 +86,30 @@ reg_df <- out_visual$meta %>%
     contraband_found_medium = ifelse(
       medium_category == "Contraband/Found Carceral Material", 1L, 0L
     ),
-    stm_panoptic_surveillance = rowSums(across(all_of(sprintf("topic_%02d", idx_panoptic)))),
-    stm_forensic_biometric    = rowSums(across(all_of(sprintf("topic_%02d", idx_forensic)))),
-    stm_shackled_countergaze  = rowSums(across(all_of(sprintf("topic_%02d", idx_shackled)))),
-    stm_digital_telephonic    = rowSums(across(all_of(sprintf("topic_%02d", idx_telephonic)))),
+    stm_panoptic_surveillance  = rowSums(across(all_of(sprintf("topic_%02d", idx_panoptic)))),
+    stm_forensic_biometric     = rowSums(across(all_of(sprintf("topic_%02d", idx_forensic)))),
+    stm_shackled_countergaze   = rowSums(across(all_of(sprintf("topic_%02d", idx_shackled)))),
+    stm_digital_telephonic     = rowSums(across(all_of(sprintf("topic_%02d", idx_telephonic)))),
     stm_total_countervisuality = stm_panoptic_surveillance + stm_forensic_biometric + stm_digital_telephonic
   )
+
+# Half-Decade Summary Table (Arnold & Tilton, 2023, Table 3.1, p. 71)
+table04b_half_decade <- reg_df %>%
+  group_by(half_decade) %>%
+  summarise(
+    n_artworks             = n(),
+    mean_panoptic_pct      = round(100 * mean(stm_panoptic_surveillance, na.rm = TRUE), 2),
+    mean_forensic_pct      = round(100 * mean(stm_forensic_biometric, na.rm = TRUE), 2),
+    mean_shackled_pct      = round(100 * mean(stm_shackled_countergaze, na.rm = TRUE), 2),
+    mean_digital_pct       = round(100 * mean(stm_digital_telephonic, na.rm = TRUE), 2),
+    mean_total_counter_pct = round(100 * mean(stm_total_countervisuality, na.rm = TRUE), 2),
+    .groups = "drop"
+  )
+readr::write_csv(table04b_half_decade, "results/charts/table04b_half_decade_trends.csv")
 
 # ------------------------------------------------------------------------------
 # 3. FIT FULL-ARCHIVE (1996-2024) AND SURGE-ERA (2010-2024) OLS REGRESSIONS
 # ------------------------------------------------------------------------------
-cat("[INFO] Estimating Full-Archive (1996-2024) and Digital-Turn (2010-2024) OLS models...\n")
-
 m1_full_stm <- lm(
   stm_total_countervisuality ~ year_centered_1996 + contraband_found_medium + score_bodily_autonomy,
   data = reg_df
@@ -110,7 +124,7 @@ m2_surge_stm <- lm(
 )
 
 tidy_full_reg <- tidy_corpus %>%
-  filter(clean_year >= 1996 & clean_year <= 2025) %>%
+  filter(!year_imputed, !is.na(clean_year), clean_year >= 1996, clean_year <= 2025) %>%
   mutate(
     year_centered_1996 = clean_year - 1996,
     contraband_found_medium = ifelse(

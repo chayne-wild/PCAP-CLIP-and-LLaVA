@@ -1,13 +1,16 @@
 # ==============================================================================
-# SCRIPT: scripts/02_stream_clip_distant_viewing.py
-# CHAPTER: Chapter 5 — Cultural Resistance: Counter-Visuality in the PCAP Archive
+# scripts/02_stream_clip_distant_viewing.py
+# Cultural Resistance: Counter-Visuality in the PCAP Archive
 # PURPOSE: Streams each PCAP artwork's image bytes into volatile RAM (io.BytesIO),
 #          computes L2-normalized 768-D CLIP (ViT-L/14) visual embeddings, and
 #          calculates zero-shot cosine similarity scores against a 6-axis
 #          Theoretical Prompt Matrix grounded in Fanon/Tosquelles (5.1),
 #          Arnold & Tilton (5.2), and Mirzoeff/Browne (5.4).
+#          Applies Contrastive Concept Subtraction (alpha = 0.25) on the
+#          Panoptic Surveillance axis to orthogonalize institutional surveillance
+#          from close-up portraits of crying/reflective eyes.
 # ETHICS : ZERO PERSISTENT IMAGE STORAGE. Every image buffer is immediately
-#          closed and garbage-collected after the GPU forward pass.
+#          closed after the GPU forward pass.
 # OUTPUT : data/pcap_clip_embeddings.parquet
 # ==============================================================================
 
@@ -15,6 +18,7 @@ import io
 import gc
 import time
 import random
+import warnings
 from pathlib import Path
 from typing import Dict, List, Tuple
 import numpy as np
@@ -28,6 +32,7 @@ import open_clip
 from tqdm.auto import tqdm
 
 ImageFile.LOAD_TRUNCATED_IMAGES = True
+warnings.filterwarnings("ignore", category=UserWarning, module="huggingface_hub")
 
 # ------------------------------------------------------------------------------
 # 1. PATHS, MODEL PARAMETERS & 6-AXIS THEORETICAL PROMPT MATRIX
@@ -45,15 +50,15 @@ CLIP_PRETRAINED = "openai"
 EMBEDDING_DIM = 768
 FLUSH_BATCH_SIZE = 100
 
-USER_AGENT = "PCAP_Virginia_Tech_Dissertation_Bot/1.0 (chayne@vt.edu)"
+USER_AGENT = "PCAP_Virginia_Tech_Research_Bot/1.0 (chayne@vt.edu)"
 HEADERS = {"User-Agent": USER_AGENT}
 
 # 6-Axis Theoretical Codebook (Ensemble prompts averaged in L2-normalized space)
 THEORETICAL_PROMPT_MATRIX: Dict[str, List[str]] = {
     "score_surveillance_biometric": [
-        "an artwork depicting a giant watching eye, panoptic gaze, security camera, or prison watchtower",
-        "surveillance spotlight, optical grid, retinal scan, or being watched by correctional guards",
-        "eyes staring through prison bars, cctv camera lens, or panopticon tower overlooking a yard",
+        "an artwork depicting a prison watchtower, security camera, searchlight beam, or panoptic surveillance",
+        "being watched by correctional guards, disembodied watching eyes on a fence or sky, or cell observation window",
+        "cctv camera lens, optical surveillance grid, retinal scan, or panopticon tower overlooking a prison",
     ],
     "score_carceral_containment": [
         "an artwork depicting steel prison bars, razor wire fence, locked cell door, and concrete walls",
@@ -82,6 +87,15 @@ THEORETICAL_PROMPT_MATRIX: Dict[str, List[str]] = {
     ],
 }
 
+# Contrastive Confounder for `score_surveillance_biometric` (Candidate B):
+# Subtracts close-up crying/reflective eye portraiture (alpha = 0.25) so the axis
+# isolates institutional/panoptic surveillance rather than subjective prisoner vision.
+SURVEILLANCE_CONFOUNDER_PROMPTS: List[str] = [
+    "a close-up pencil or charcoal drawing of a single sad human eye crying a tear",
+    "close-up facial portrait focusing on eyelashes, eyebrows, and a reflective pupil",
+]
+ALPHA_CONFOUNDER_SUBTRACT = 0.25
+
 
 # ------------------------------------------------------------------------------
 # 2. MODEL INITIALIZATION & ZERO-SHOT TEXT ENCODING
@@ -89,7 +103,8 @@ THEORETICAL_PROMPT_MATRIX: Dict[str, List[str]] = {
 def load_clip_and_encode_prompts(device: torch.device):
     """
     Load OpenCLIP ViT-L/14 and precompute the L2-normalized 768-D text prototype
-    vectors for each of the 6 theoretical axes.
+    vectors for each of the 6 theoretical axes (applying contrastive confounder
+    orthogonalization to `score_surveillance_biometric`).
     """
     print(f"[INFO] Loading OpenCLIP {CLIP_MODEL_ARCH} ({CLIP_PRETRAINED}) on {device}...")
     model, _, preprocess = open_clip.create_model_and_transforms(
@@ -102,14 +117,25 @@ def load_clip_and_encode_prompts(device: torch.device):
     axis_embeddings = []
 
     with torch.no_grad():
+        # Pre-encode confounder vector for contrastive surveillance axis
+        conf_tokens = tokenizer(SURVEILLANCE_CONFOUNDER_PROMPTS).to(device)
+        conf_feats = model.encode_text(conf_tokens).float()
+        conf_feats = conf_feats / conf_feats.norm(dim=-1, keepdim=True)
+        conf_mean = conf_feats.mean(dim=0, keepdim=True)
+        conf_mean = conf_mean / conf_mean.norm(dim=-1, keepdim=True)
+
         for axis in axis_names:
             prompts = THEORETICAL_PROMPT_MATRIX[axis]
             tokens = tokenizer(prompts).to(device)
             text_feats = model.encode_text(tokens).float()
             text_feats = text_feats / text_feats.norm(dim=-1, keepdim=True)
-            # Average ensemble prompts and re-normalize to unit hypersphere
             mean_feat = text_feats.mean(dim=0, keepdim=True)
             mean_feat = mean_feat / mean_feat.norm(dim=-1, keepdim=True)
+
+            if axis == "score_surveillance_biometric":
+                mean_feat = mean_feat - (ALPHA_CONFOUNDER_SUBTRACT * conf_mean)
+                mean_feat = mean_feat / mean_feat.norm(dim=-1, keepdim=True)
+
             axis_embeddings.append(mean_feat)
 
     # Shape: (6, 768)
@@ -117,7 +143,7 @@ def load_clip_and_encode_prompts(device: torch.device):
     assert prompt_matrix_tensor.shape == (6, EMBEDDING_DIM), (
         f"[ERROR] Expected (6, {EMBEDDING_DIM}) prompt tensor, got {prompt_matrix_tensor.shape}"
     )
-    print("[TDD PASS] 6-Axis Theoretical Prompt Matrix encoded and L2-normalized.")
+    print("[TDD PASS] 6-Axis Theoretical Prompt Matrix (with Contrastive Surveillance) encoded.")
     return model, preprocess, axis_names, prompt_matrix_tensor
 
 
@@ -143,14 +169,13 @@ def stream_and_extract_single_artwork(
         resp = session.get(image_url, headers=HEADERS, timeout=30)
         resp.raise_for_status()
 
-        # Load strictly into volatile RAM buffer
         buffer = io.BytesIO(resp.content)
         pil_image = Image.open(buffer).convert("RGB")
         image_tensor = preprocess(pil_image).unsqueeze(0).to(device)
 
         with torch.no_grad():
             if device.type == "cuda":
-                with torch.cuda.amp.autocast():
+                with torch.amp.autocast("cuda"):
                     img_feat = model.encode_image(image_tensor)
             else:
                 img_feat = model.encode_image(image_tensor)
@@ -158,7 +183,6 @@ def stream_and_extract_single_artwork(
             img_feat = img_feat.float()
             img_feat = img_feat / img_feat.norm(dim=-1, keepdim=True)
 
-            # Cosine similarity in unit-normalized space is the dot product
             sim_scores = (img_feat @ prompt_matrix_tensor.T).squeeze(0)
 
             emb_np = img_feat.squeeze(0).cpu().numpy().astype(np.float32)
@@ -167,7 +191,6 @@ def stream_and_extract_single_artwork(
         return emb_np, scores_np
 
     finally:
-        # Strict Ethical Compliance: Always close and delete image buffers
         if pil_image is not None:
             pil_image.close()
             del pil_image
@@ -217,7 +240,6 @@ def main() -> None:
     master_df = pd.read_csv(MASTER_CSV_PATH, dtype=str).fillna("")
     print(f"[INFO] Loaded {len(master_df)} artwork records from {MASTER_CSV_PATH}.")
 
-    # Check for existing Parquet checkpoint to support fault-tolerant resume
     processed_ids = set()
     existing_df = None
     if CLIP_PARQUET_PATH.exists():
@@ -278,10 +300,8 @@ def main() -> None:
             print(f"\n[WARN] Skipping item_id={item_id} due to stream error: {err}")
             continue
 
-        # Polite rate-limiting
         time.sleep(random.uniform(0.3, 0.8))
 
-        # Periodically flush batch to Apache Parquet
         if len(batch_records) >= FLUSH_BATCH_SIZE:
             batch_df = pd.DataFrame(batch_records)
             if existing_df is not None:
@@ -293,7 +313,6 @@ def main() -> None:
             batch_records.clear()
             gc.collect()
 
-    # Final flush of remaining records
     if batch_records:
         batch_df = pd.DataFrame(batch_records)
         if existing_df is not None:
@@ -305,7 +324,6 @@ def main() -> None:
         batch_records.clear()
         gc.collect()
 
-    # Final TDD Verification of Parquet Output
     assert CLIP_PARQUET_PATH.exists(), "[ERROR] Parquet output file was not created!"
     final_meta = pq.read_metadata(CLIP_PARQUET_PATH)
     print("=" * 78)

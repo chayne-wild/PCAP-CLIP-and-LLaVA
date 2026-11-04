@@ -1,7 +1,7 @@
 %%R
 # ==============================================================================
-# SCRIPT: scripts/05_llava_tidy_nlp_and_searchK.R
-# CHAPTER: Chapter 5 — Cultural Resistance: Counter-Visuality in the PCAP Archive
+# scripts/05_llava_tidy_nlp_and_searchK.R
+# Cultural Resistance: Counter-Visuality in the PCAP Archive
 # PURPOSE: Fault-tolerantly ingests data/pcap_llava_interrogations.jsonl, joins
 #          with data/pcap_tidy_corpus.rds, executes tidytext tokenization and
 #          textstem lemmatization, and applies the "Visual Plural Bypass"
@@ -63,7 +63,12 @@ tidy_corpus <- readRDS(corpus_rds_path) %>%
   mutate(item_id = as.character(item_id))
 
 joined_df <- llava_df %>%
-  select(item_id, sampling_stratum, llava_description) %>%
+  select(
+    item_id,
+    sampling_stratum,
+    llava_description,
+    any_of(c("formal_brightness", "formal_saturation", "formal_warm_ratio"))
+  ) %>%
   inner_join(tidy_corpus, by = "item_id")
 
 stopifnot(nrow(joined_df) > 0)
@@ -90,7 +95,15 @@ visual_vlm_boilerplate <- unique(c(
   "pictures", "illustration", "illustrations", "portrait", "portraits",
   "first", "second", "third", "fourth", "one", "two", "three", "four",
   "left", "right", "center", "central", "top", "bottom", "side", "sides",
-  "middle", "area", "areas", "space", "spaces", "use", "uses", "used", "using"
+  "middle", "area", "areas", "space", "spaces", "use", "uses", "used", "using",
+  # Pilot-Identified Spatial & COCO Domain-Shift Boilerplate
+  "locate", "located", "location", "setting", "settings", "environment",
+  "environments", "corner", "corners", "frame", "frames", "framed",
+  "individual", "individuals", "addition", "additionally", "main", "possibly",
+  "possible", "further", "closer", "towards", "situate", "situated", "place",
+  "placed", "surround", "surrounded", "surrounding", "relax", "relaxation",
+  "socialize", "socializing", "public", "gather", "gathering", "represent",
+  "represents", "represented", "representing", "paragraph"
 ))
 
 data("stop_words", package = "tidytext")
@@ -167,11 +180,11 @@ cat(sprintf("[INFO] Running stm::searchK across K = {%s}...\n",
             paste(candidate_K, collapse = ", ")))
 
 # Adapt B-spline degrees of freedom safely if running on a small pilot subset
-n_unique_yrs <- length(unique(out_visual$meta$clean_year))
+n_unique_yrs <- length(unique(out_visual$meta$clean_year_stm))
 prevalence_formula <- if (n_unique_yrs >= 10) {
-  ~ s(clean_year) + medium_category
+  ~ s(clean_year_stm) + medium_category
 } else {
-  ~ clean_year + medium_category
+  ~ clean_year_stm + medium_category
 }
 
 set.seed(42)

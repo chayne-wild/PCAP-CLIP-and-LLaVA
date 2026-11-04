@@ -1,7 +1,7 @@
 %%R
 # ==============================================================================
-# SCRIPT: scripts/08_crossmodal_network_igraph.R
-# CHAPTER: Chapter 5 — Cultural Resistance: Counter-Visuality in the PCAP Archive
+# scripts/08_crossmodal_network_igraph.R
+# Cultural Resistance: Counter-Visuality in the PCAP Archive
 # PURPOSE: Computes the topic correlation matrix (stm::topicCorr) across the
 #          25 LLaVA visual motifs and integrates CLIP visual clusters and
 #          carceral material medium covariates into a cross-modal igraph
@@ -11,6 +11,11 @@
 #          results/figures/fig05_crossmodal_network_igraph.png
 #          results/charts/table05_material_motif_correlations.csv
 # ==============================================================================
+
+drive_r_lib <- "/content/drive/MyDrive/colab_pcap_folder/r_libs"
+if (dir.exists(drive_r_lib)) {
+  .libPaths(unique(c(drive_r_lib, .libPaths())))
+}
 
 suppressPackageStartupMessages({
   library(tidyverse)
@@ -56,7 +61,22 @@ cluster_mat <- sapply(cluster_levels, function(cl) as.numeric(meta_df$visual_clu
 if (!is.matrix(cluster_mat)) cluster_mat <- matrix(cluster_mat, ncol = length(cluster_levels))
 colnames(cluster_mat) <- paste0("CLIP ", cluster_levels)
 
-cov_mat <- cbind(medium_mat, cluster_mat)
+formal_cols <- intersect(
+  c("formal_brightness", "formal_saturation", "formal_warm_ratio"),
+  colnames(meta_df)
+)
+if (length(formal_cols) > 0) {
+  formal_mat <- as.matrix(meta_df[, formal_cols, drop = FALSE])
+  colnames(formal_mat) <- c(
+    "Formal: Brightness (Intensity)",
+    "Formal: Saturation (Chroma)",
+    "Formal: Warm Color Ratio"
+  )[seq_along(formal_cols)]
+  cov_mat <- cbind(medium_mat, cluster_mat, formal_mat)
+} else {
+  cov_mat <- cbind(medium_mat, cluster_mat)
+}
+
 cross_corr_edges <- list()
 
 for (k in 1:25) {
@@ -67,14 +87,18 @@ for (k in 1:25) {
   for (c_idx in seq_len(ncol(cov_mat))) {
     cov_name <- colnames(cov_mat)[c_idx]
     c_vec <- cov_mat[, c_idx]
-    if (sd(t_vec) > 0 && sd(c_vec) > 0) {
+    if (sd(t_vec, na.rm = TRUE) > 0 && sd(c_vec, na.rm = TRUE) > 0) {
       ct <- suppressWarnings(cor.test(t_vec, c_vec))
       cross_corr_edges[[length(cross_corr_edges) + 1]] <- tibble(
         from_node          = t_short,
         to_node            = cov_name,
         topic_id           = k,
         theoretical_family = t_info$theoretical_family,
-        covariate_type     = ifelse(str_starts(cov_name, "Medium:"), "Material Medium", "CLIP Cluster"),
+        covariate_type     = case_when(
+          str_starts(cov_name, "Medium:") ~ "Material Medium",
+          str_starts(cov_name, "Formal:") ~ "Formal HCI Color/Light",
+          TRUE                            ~ "CLIP Cluster"
+        ),
         pearson_r          = round(as.numeric(ct$estimate), 4),
         p_value            = signif(ct$p.value, 4)
       )
@@ -92,12 +116,16 @@ cat("[TDD PASS] Saved results/charts/table05_material_motif_correlations.csv\n")
 # 3. BUILD & RENDER MULTIPARTITE IGRAPH NETWORK (FIGURE 05)
 # ------------------------------------------------------------------------------
 corr_mat <- topic_corr_obj$cor
-colnames(corr_mat) <- rownames(corr_mat) <- vapply(1:25, function(k) {
+topic_node_labels <- vapply(1:25, function(k) {
   t_info <- table03_topics %>% filter(topic_id == k)
   sprintf("T%02d (%s)", k, str_extract(t_info$frex_top10, "^[^,]+"))
 }, character(1))
 
-topic_edges <- as_tibble(as.table(corr_mat)) %>%
+dimnames(corr_mat) <- list(Var1 = topic_node_labels, Var2 = topic_node_labels)
+
+topic_edges <- as.data.frame(as.table(corr_mat), stringsAsFactors = FALSE) %>%
+  setNames(c("Var1", "Var2", "n")) %>%
+  as_tibble() %>%
   transmute(
     from_node = as.character(Var1),
     to_node   = as.character(Var2),
