@@ -153,7 +153,7 @@ PCAP-CLIP-and-LLaVA/
 
 ## 5. Ethical & Institutional Compliance
 
-The PCAP Visual Art Database is hosted by the University of Michigan's *Documenting Criminalization and Confinement* (DCC) initiative (`dcc.carceralstateproject.lsa.umich.edu`). As stated on the portal:
+The PCAP Visual Art Database (https://dcc.carceralstateproject.lsa.umich.edu/s/pcapartdatabase/page/home) is hosted by the University of Michigan's Documenting Criminalization and Confinement (DCC) Initiative. As stated on the portal:
 > *"All of the images you see in this database are the property of the artists who created these works. Artists retain all rights to their art including copyright. Reproduction of a work in whole or in part without the permission of the artist and the Prison Creative Arts Project is prohibited."*
 
 To honor incarcerated artists' copyright, moral rights, and data sovereignty while minimizing server load on University of Michigan infrastructure, this pipeline enforces four strict ethical protocols:
@@ -205,9 +205,9 @@ To honor incarcerated artists' copyright, moral rights, and data sovereignty whi
 ```
 
 **Archival Source Attribution:**
-> Prison Creative Arts Project (PCAP) Visual Art Database. Documenting Criminalization and Confinement (DCC) / Carceral State Project, University of Michigan. [https://dcc.carceralstateproject.lsa.umich.edu](https://dcc.carceralstateproject.lsa.umich.edu)
-
-See also:
-https://lsa.umich.edu/pcap
+> Prison Creative Arts Project (PCAP) Visual Art Database. Documenting Criminalization and Confinement (DCC) / Carceral State Project, University of Michigan.
+> * **PCAP Visual Art Database Portal (`site_id=17`):** [https://dcc.carceralstateproject.lsa.umich.edu/s/pcapartdatabase/page/home](https://dcc.carceralstateproject.lsa.umich.edu/s/pcapartdatabase/page/home)
+> * **PCAP Institutional Home (UMich LSA):** [https://lsa.umich.edu/pcap](https://lsa.umich.edu/pcap)
+> * **Documenting Criminalization and Confinement (DCC) Host:** [https://dcc.carceralstateproject.lsa.umich.edu/](https://dcc.carceralstateproject.lsa.umich.edu/)
 
 ---
