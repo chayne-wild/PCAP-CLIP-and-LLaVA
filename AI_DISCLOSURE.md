@@ -1,14 +1,16 @@
 ---
 disclosure-default: ai-assisted
 models-used:
-  - Gemini 4 Argon (gemini-4-argon)
-  - Google Colab AI (gemini-2.0-flash-lite)
+  - Gemini 4 Argon
+  - gemini-4-argon
+  - Google Colab AI
+  - gemini-2.0-flash-lite
 providers:
   - Google
 scope: |
   Most application code is AI-assisted with manual review.
   Tests and migrations may be ai-generated.
-last-updated: 2026-11-02
+last-updated: 2026-11-04
 ---
 
 # AI Disclosure
